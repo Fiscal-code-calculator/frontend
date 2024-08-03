@@ -10,9 +10,8 @@
 }
 
 body{background-color: var(--bg-color-dark-mode); overflow-x: hidden;}
-html{overflow-x: hidden;}
 
-input{border: none; outline: none;}
+input, select{border: none; outline: none;}
 button{border: none; outline: none; cursor: pointer;}
 li{list-style: none;}
 hr{border: none;}
