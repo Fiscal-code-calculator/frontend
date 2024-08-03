@@ -1,0 +1,59 @@
+.wrapper{ width: 100vw; height: calc(100vh - 100px); }
+
+#authentication-box{
+    padding: 25px;
+    border-radius: 15px;
+    background: #201F1F;
+
+    .fields{
+        gap: 15px;
+
+        .field{
+            gap: 25px;
+            width: 100%;
+        
+            .icon{
+                width: 50px; height: 50px;
+                background: #363636;
+                padding: 5px;
+                border-radius: 10px;
+            }
+
+            .icon span{width: 25px; height: 25px; display: block;}
+            .icon.user span{background: url('../../../assets/icons/user-white.svg') center/contain no-repeat;}
+            .icon.email span{background: url('../../../assets/icons/envelope-white.svg') center/contain no-repeat;}
+            .icon.password span{background: url('../../../assets/icons/lock-white.svg') center/contain no-repeat;}
+            .icon.confirm-password span{background: url('../../../assets/icons/confirm-password-white.svg') center/contain no-repeat;}
+
+            input{
+                width: 250px;
+                padding: 10px;
+                border-radius: 10px;
+                color: #eee;
+                background-color: #363636;
+            }
+
+        }
+    }
+
+    .forgot-password{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        
+        a{margin: 10px 0 15px 0; color: #eee; font-size: 0.9em; text-align: right;}
+    }
+
+    button{
+        height: 65px;
+        border-radius: 10px;
+        background:var(--primary);
+        color: white;
+        font-size: 1.25em;
+        font-weight: bold;
+    }
+
+    button:hover{background: rgba($color: #E63946, $alpha: .75);}
+}
+
+a.link, p{max-width: 350px; margin-top: 25px; color: white; font-size: 0.9em; text-align: center;}
