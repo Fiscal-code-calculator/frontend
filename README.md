@@ -2,4 +2,4 @@
 
 ## Description
 
-Simple application to calculate the fiscal code following italian rules.
+Client of the simple application to calculate the fiscal code following italian rules.
