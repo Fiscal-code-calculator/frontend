@@ -2,26 +2,26 @@
 
 <div class="wrapper center-flex column">
 
-    <form id="authentication-box" class="column">
+    <form id="authentication-box" class="column" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <div class="fields column">
             <div class="field row">
                 <div class="icon user center-flex"> <span></span> </div>
-                <input type="text" placeholder="Full name">
+                <input type="text" placeholder="Full name" formControlName="fullName">
             </div>
         
             <div class="field row">
                 <div class="icon email center-flex"> <span></span> </div>
-                <input type="email" placeholder="E-mail">
+                <input type="email" placeholder="E-mail" formControlName="email">
             </div>
 
             <div class="field row">
                 <div class="icon password center-flex"> <span></span> </div>
-                <input type="password" placeholder="Password">
+                <input type="password" placeholder="Password" formControlName="password">
             </div>
             
             <div class="field row">
                 <div class="icon confirm-password center-flex"> <span></span> </div>
-                <input type="password" placeholder="Confirm Password">
+                <input type="password" placeholder="Confirm Password"  formControlName="confirmPassword">
             </div>
         </div>
     
@@ -29,7 +29,7 @@
             <a class="link" routerLink="/login" href="/login"> Already have an account? </a>
         </div>
     
-        <button> REGISTER </button>
+        <button type="submit" [disabled]="!registerForm.valid"> REGISTER </button>
     
     </form>
     

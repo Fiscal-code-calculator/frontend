@@ -1,12 +1,12 @@
 #title{
     width: 100vw; height: 50px;
-    margin: 25px 0;
+    margin: 25px 0 15px 0;
     color: white;
     text-align: center;
     cursor: pointer;
 }
 
-.wrapper{ width: 100vw; height: calc(100vh - 100px); }
+.wrapper{ width: 100vw; height: calc(100vh - 90px); }
 
 #authentication-box{
     padding: 25px;
@@ -60,8 +60,8 @@
         font-size: 1.25em;
         font-weight: bold;
     }
-
     button:hover{background: rgba($color: #E63946, $alpha: .75);}
+    button:disabled{background: #363636; cursor: not-allowed;}
 }
 
 a.link, p{max-width: 350px; margin-top: 25px; color: white; font-size: 0.9em; text-align: center;}

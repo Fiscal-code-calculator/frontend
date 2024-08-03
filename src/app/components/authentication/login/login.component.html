@@ -2,16 +2,16 @@
 
 <div class="wrapper center-flex column">
 
-    <form id="authentication-box" class="column">
+    <form id="authentication-box" class="column" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="fields column">
             <div class="field row">
-                <div class="icon user center-flex"> <span></span> </div>
-                <input type="text" placeholder="Full name">
+                <div class="icon email center-flex"> <span></span> </div>
+                <input type="email" placeholder="E-mail" formControlName="email">
             </div>
         
             <div class="field row">
                 <div class="icon password center-flex"> <span></span> </div>
-                <input type="password" placeholder="Password">
+                <input type="password" placeholder="Password" formControlName="password">
             </div>
         </div>
     
@@ -19,7 +19,7 @@
             <a class="link"> Forgot password? </a>
         </div>
     
-        <button> LOGIN </button>
+        <button type="submit" [disabled]="!loginForm.valid"> LOGIN </button>
     
     </form>
     
