@@ -1,12 +1,18 @@
-import {NgModule} from "@angular/core";
-import {BrowserModule} from "@angular/platform-browser";
-import {AppRoutingModule} from "./app-routing.module";
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { AppRoutingModule } from "./app-routing.module";
 
-import {MainComponent} from "./components/main/main.component";
+import { MainComponent } from "./components/main/main.component";
+import { LoginComponent } from './components/authentication/login/login.component';
+import { RegisterComponent } from './components/authentication/register/register.component';
+import { CalculatorComponent } from './components/calculator/calculator.component';
 
 @NgModule({
   declarations: [
-    MainComponent
+    MainComponent,
+    LoginComponent,
+    RegisterComponent,
+    CalculatorComponent
   ],
   imports: [
     BrowserModule,
@@ -16,4 +22,4 @@ import {MainComponent} from "./components/main/main.component";
   bootstrap: [MainComponent]
 })
 
-export class AppModule{}
+export class AppModule{ }
