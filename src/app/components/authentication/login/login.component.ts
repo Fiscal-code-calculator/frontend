@@ -1,32 +1,58 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { AuthService } from '../../../services/auth.service';
+import { Component, inject, OnInit } from "@angular/core";
+import { HttpErrorResponse } from "@angular/common/http";
+import { Router } from "@angular/router";
+import { NgForm } from "@angular/forms";
+import { AuthService } from "../../../services/auth.service";
+import { BackendResponse } from "../../../interfaces/BackendResponse.interface";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrl: '../authentication.scss'
+	selector: "app-login",
+	templateUrl: "./login.component.html",
+	styleUrl: "../authentication.scss"
 })
+
 export class LoginComponent implements OnInit{
-  constructor(private fb: FormBuilder, private authService: AuthService){ }
-  loginForm!: any;
+	private authService: AuthService;
 
-  ngOnInit(): void {
-    this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")]]
-    })
-  }
+	constructor(private router:Router){
+		this.authService = inject(AuthService);
+	}
 
-  onSubmit(): void {
-    if (this.loginForm.valid) {
-      const email = this.loginForm.get('email').value;
-      const password = this.loginForm.get('password').value;
+	public ngOnInit(): void {}
 
-       this.authService.login(email, password)
-    }
-    else{ /* error management to be implemented */ }
-  }
+  public loginSubmit(loginForm:NgForm): void {
+		if (loginForm.valid === true) {
+			const email = loginForm.value.email;
+			const password = loginForm.value.password;
+			if(email && password){
+				this.authService.doLogin({email,password}).subscribe({
+					next: (data:BackendResponse) => {
+						if(data.check === true){
+
+							//estrarre il token che arriva dal server
+							localStorage.setItem("token","aaaaaaa");
+							this.router.navigate(["/home"]);
 
 
+						}else{
+
+							//management of error login invalid
+							console.error(data.message);
+
+						}
+					},
+					error: (error:HttpErrorResponse) => {
+
+						//management of error login invalid
+						console.error(error);
+
+					}
+				});
+    	}else{
+
+				// error management to be implemented for login not possible
+
+			}
+  	}
+	}
 }

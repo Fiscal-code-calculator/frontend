@@ -1,34 +1,58 @@
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { AuthService } from '../../../services/auth.service';
+import { Component, inject, OnInit } from "@angular/core";
+import { HttpErrorResponse } from "@angular/common/http";
+import { NgForm } from "@angular/forms";
+import { AuthService } from "../../../services/auth.service";
+import { BackendResponse } from "../../../interfaces/BackendResponse.interface";
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrl: '../authentication.scss'
+	selector: "app-register",
+	templateUrl: "./register.component.html",
+	styleUrl: "../authentication.scss"
 })
 export class RegisterComponent implements OnInit{
-  constructor(private fb: FormBuilder, private authService: AuthService){ }
-  registerForm!: any;
+	private authService: AuthService;
 
-  ngOnInit(): void {
-    this.registerForm = new FormGroup({
-      fullName: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")]),
-      confirmPassword: new FormControl('', Validators.required)
-    })
-  }
+	constructor(){
+		this.authService = inject(AuthService);
+	}
 
-  onSubmit(): void {
-    if(this.registerForm.valid){
-      const fullName = this.registerForm.get('email').value;
-      const email = this.registerForm.get('email').value;
-      const password = this.registerForm.get('password').value;
+	public ngOnInit(): void {}
 
-       this.authService.register(fullName, email, password)
-    }
-    else{ /* error management to be implemented */ }
+	public registerSubmit(registerForm:NgForm): void {
+		if(registerForm.valid === true){
+			const fullname:string = registerForm.value.fullname;
+			const email:string = registerForm.value.email;
+			const password:string = registerForm.value.password;
+			const repeatpassword:string = registerForm.value.repeatpassword;
+			if(fullname && email && password && repeatpassword && password === repeatpassword){
+				this.authService.doRegister({fullname,email,password,repeatpassword}).subscribe({
+					next: (data:BackendResponse) => {
+						if(data.check === true){
+
+							//registrazione andata a buon fine
+							console.log(data.message);
+
+						}else{
+
+							//registrazione non effettuata, gestire l'errore
+							console.error(data.message);
+
+						}
+
+					},
+					error: (error:HttpErrorResponse) => {
+
+						//registrazione non effettuata, gestire l'errore
+						console.error(error);
+
+					}
+				});
+			}
+		}else{
+
+			//error management to be implemented for registration not possible
+
+		}
   }
 
 

@@ -1,28 +1,40 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { inject, Injectable } from "@angular/core";
+import { HttpRequestService } from "./httprequest.service";
+import { Router } from "@angular/router";
+import { Observable } from "rxjs";
+import { LoginData } from "../interfaces/logindata.interface";
+import { BackendResponse } from "../interfaces/BackendResponse.interface";
+import { RegisterData } from "../interfaces/registerdata.interface";
+import { environment } from "../../environments/environment";
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: "root"
 })
 export class AuthService{
-  constructor(private router: Router){ }
-  authenticated: boolean = true;
+	private httprequest:HttpRequestService;
 
+	constructor(private router:Router){
+		this.httprequest = inject(HttpRequestService);
+	}
 
-  login(email: string, password: string){
-    // do the request to login endpoint and check creds
+	public isAuthenticated():boolean{
+		if(localStorage.getItem("token") !== null){
+			return true;
+		}else{
+			return false;
+		}
+	}
 
-    console.log('Logged In as: ' + email);
-    this.authenticated = true;
-    this.router.navigate(['/home']);
-  }
+	public doLogin(form:LoginData):Observable<BackendResponse>{
+		return this.httprequest.postRequest(environment.backendUrl + "/users/login",form);
+	}
 
-  register(fullName: string, email: string, password: string){
-    // do the request to register endpoint
-    
-    console.log(`Logged In as: ${fullName} (${email})`);
-    this.router.navigate(['/login']);
-  }
+	public doRegister(form:RegisterData):Observable<BackendResponse>{
+		return this.httprequest.postRequest(environment.backendUrl + "/users/register",form);
+	}
 
-  
+	public doLogout():void{
+		localStorage.removeItem("token");
+		this.router.navigate(["/login"]);
+	}
 }

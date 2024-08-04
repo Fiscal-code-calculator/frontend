@@ -1,38 +1,28 @@
-<h1 id="title" routerLink="/home" href="/home"> Fiscal Code Calculator </h1>
-
+<h1 id="title" routerLink="/home"> Fiscal Code Calculator </h1>
 <div class="wrapper center-flex column">
-
-    <form id="authentication-box" class="column" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-        <div class="fields column">
-            <div class="field row">
-                <div class="icon user center-flex"> <span></span> </div>
-                <input type="text" placeholder="Full name" formControlName="fullName">
-            </div>
-        
-            <div class="field row">
-                <div class="icon email center-flex"> <span></span> </div>
-                <input type="email" placeholder="E-mail" formControlName="email">
-            </div>
-
-            <div class="field row">
-                <div class="icon password center-flex"> <span></span> </div>
-                <input type="password" placeholder="Password" formControlName="password">
-            </div>
-            
-            <div class="field row">
-                <div class="icon confirm-password center-flex"> <span></span> </div>
-                <input type="password" placeholder="Confirm Password"  formControlName="confirmPassword">
-            </div>
-        </div>
-    
-        <div class="forgot-password">
-            <a class="link" routerLink="/login" href="/login"> Already have an account? </a>
-        </div>
-    
-        <button type="submit" [disabled]="!registerForm.valid"> REGISTER </button>
-    
-    </form>
-    
-    <p> Continuando, accetti l’informativa sulla privacy contenuta nel d.lgs. 196/03 s.m.i. </p>
-
+		<form #registerForm="ngForm" id="authentication-box" class="column" (ngSubmit)="registerSubmit(registerForm)">
+				<div class="fields column">
+						<div class="field row">
+								<div class="icon user center-flex"> <span></span> </div>
+								<input type="text" placeholder="Full name" name="fullname" id="fullname" required ngModel>
+						</div>
+						<div class="field row">
+								<div class="icon email center-flex"> <span></span> </div>
+								<input type="email" placeholder="E-mail" name="email" id="email" required email ngModel>
+						</div>
+						<div class="field row">
+								<div class="icon password center-flex"> <span></span> </div>
+								<input type="password" placeholder="Password" name="password" id="password" required ngModel>
+						</div>
+						<div class="field row">
+								<div class="icon confirm-password center-flex"> <span></span> </div>
+								<input type="password" placeholder="Confirm Password" name="repeatpassword" id="repeatpassword" required ngModel>
+						</div>
+				</div>
+				<div class="forgot-password">
+						<a class="link" routerLink="/login" href="/login"> Already have an account? </a>
+				</div>
+				<button type="submit" [disabled]="!registerForm.valid"> REGISTER </button>
+		</form>
+		<p> Continuando, accetti l’informativa sulla privacy contenuta nel d.lgs. 196/03 s.m.i. </p>
 </div>
