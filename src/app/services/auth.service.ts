@@ -11,18 +11,13 @@ import { environment } from "../../environments/environment";
 	providedIn: "root"
 })
 export class AuthService{
+	constructor(private router:Router){ this.httprequest = inject(HttpRequestService); }
 	private httprequest:HttpRequestService;
 
-	constructor(private router:Router){
-		this.httprequest = inject(HttpRequestService);
-	}
 
 	public isAuthenticated():boolean{
-		if(localStorage.getItem("token") !== null){
-			return true;
-		}else{
-			return false;
-		}
+		if(localStorage.getItem("token") !== null){ return true; }
+		else{ return false; }
 	}
 
 	public doLogin(form:LoginData):Observable<BackendResponse>{

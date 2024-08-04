@@ -1,1 +1,29 @@
-<p>history works!</p>
+<nav class="row">
+    <h2> Fiscal Code Calculator </h2>
+    <div class="items">
+        <div class="icon user center-flex"> <span></span> </div>
+    </div>
+</nav>
+
+
+<div id="sidebar">
+    <ul>
+        <li routerLink="/profile/settings"> Profile </li>
+        <li class="active"> History </li>
+    </ul>
+</div>
+
+<div id="main">
+
+    <div class="history">
+        <div class="card row" *ngFor="let item of [0, 1, 2, 3, 4, 5]">
+            <div class="person">
+                <h2> John Doe </h2>
+                <p class="gender"> Male </p>
+                <p> Rome (RM) - 08/02/1998 </p>
+            </div>
+            <h2> CFCODE************ </h2>
+        </div>
+    </div>
+
+</div>

@@ -10,19 +10,17 @@ import { SettingsComponent } from "./components/profile/settings/settings.compon
 import { HistoryComponent } from "./components/profile/history/history.component";
 
 const routes: Routes = [
-
 	{ path: "", redirectTo: "home", pathMatch: "full" },
 	{ path: "home", component: CalculatorComponent, canActivate: [authGuard] },
 
 	{ path: "login", component: LoginComponent },
 	{ path: "register", component: RegisterComponent },
 
-	{ path: "profile", canActivate: [authGuard],canActivateChild:[authGuardChildren], children: [
+	{ path: "profile", children: [ // canActivate: [authGuard], canActivateChild: [authGuardChildren]
 		{ path: "", redirectTo: "settings", pathMatch: "full" },
 		{ path: "settings", component: SettingsComponent },
 		{ path: "history", component: HistoryComponent },
 	]},
-
 ];
 
 @NgModule({

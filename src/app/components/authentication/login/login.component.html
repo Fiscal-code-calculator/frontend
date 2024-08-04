@@ -1,20 +1,21 @@
-<h1 id="title" routerLink="/home">Fiscal Code Calculator</h1>
+<h1 id="title"> Fiscal Code Calculator </h1>
+
 <div class="wrapper center-flex column">
-		<form #loginForm="ngForm" id="authentication-box" class="column" (ngSubmit)="loginSubmit(loginForm)">
-				<div class="fields column">
-						<div class="field row">
-								<div class="icon email center-flex"> <span></span> </div>
-								<input type="email" placeholder="E-mail" name="email" id="email" required email ngModel>
-						</div>
-						<div class="field row">
-								<div class="icon password center-flex"> <span></span> </div>
-								<input type="password" placeholder="Password" name="password" id="password" required ngModel>
-						</div>
-				</div>
-				<div class="forgot-password">
-						<a class="link"> Forgot password? </a>
-				</div>
-				<button type="submit" [disabled]="!loginForm.valid"> LOGIN </button>
-		</form>
-		<a class="link" routerLink="/register"> Don't have an account yet? </a>
+	<form #loginForm="ngForm" id="authentication-box" class="column" (ngSubmit)="loginSubmit(loginForm)">
+		<div class="fields column">
+			<div class="field row">
+				<div class="icon email center-flex"> <span></span> </div>
+				<input type="email" placeholder="E-mail" name="email" id="email" required email ngModel>
+			</div>
+			<div class="field row">
+				<div class="icon password center-flex"> <span></span> </div>
+				<input type="password" placeholder="Password" name="password" id="password" required ngModel>
+			</div>
+		</div>
+
+		<div class="forgot-password"> <a class="link"> Forgot password? </a> </div>
+		
+		<button type="submit" [disabled]="!loginForm.valid"> LOGIN </button>
+	</form>
+	<a class="link" routerLink="/register"> Don't have an account yet? </a>
 </div>

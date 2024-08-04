@@ -1,12 +1,5 @@
-#title{
-    width: 100vw; height: 50px;
-    margin: 25px 0 15px 0;
-    color: white;
-    text-align: center;
-    cursor: pointer;
-}
-
-.wrapper{ width: 100vw; height: calc(100vh - 90px); }
+#title{width: 100vw; height: 50px; margin: 25px 0 15px 0; color: white; text-align: center;}
+.wrapper{width: 100vw; height: calc(100vh - 90px);}
 
 #authentication-box{
     padding: 25px;

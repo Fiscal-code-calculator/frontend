@@ -1,5 +1,7 @@
 nav{
     width: 100vw; height: 75px;
+    position: fixed;
+    top: 0;
     align-items: center;
     justify-content: space-between;
     padding: 0 25px;
@@ -19,6 +21,7 @@ nav{
 #sidebar{
     width: 250px; height: calc(100vh - 75px);
     position: fixed;
+    top: 75px;
     padding: 25px 15px;
     color: white;
     background: #181818;
@@ -35,8 +38,12 @@ nav{
 
 #main{
     width: calc(100vw - 250px);
-    margin: 50px 0 0 300px;
+    display: flex;
+    justify-content: center;
+    margin: 50px 0 0 250px;
     color: white;
+
+    .infos{width: 90%; padding: 25px; border-radius: 20px; background: #181818;}
 
     .field{
         margin: 10px;
@@ -50,4 +57,12 @@ nav{
         }
     }
 
+}
+
+
+/************************************************/
+
+@media screen and (max-width: 700px){
+    #sidebar{display: none;}
+    #main{width: 100vw; margin: 50px 0 0 0;}
 }
