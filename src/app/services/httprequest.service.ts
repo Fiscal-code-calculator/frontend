@@ -6,11 +6,11 @@ import { LoginData } from "../interfaces/logindata.interface";
 import { RegisterData } from "../interfaces/registerdata.interface";
 
 @Injectable({
-  providedIn:"root"
+	providedIn:"root"
 })
 
 export class HttpRequestService {
-  constructor(private http:HttpClient) { }
+	constructor(private http:HttpClient) { }
 
 	public getRequest(url:string):Observable<BackendResponse>{
 		return this.http.get<BackendResponse>(url);

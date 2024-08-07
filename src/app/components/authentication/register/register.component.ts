@@ -61,5 +61,5 @@ export class RegisterComponent implements OnInit{
 			console.error("form not compiled correctly.");
 
 		}
-  }
+	}
 }

@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable } from "rxjs";
 import { Theme } from "../interfaces/theme.interface";
 
 @Injectable({
-  providedIn: "root"
+	providedIn: "root"
 })
 
 export class ThemeService{
@@ -12,7 +12,7 @@ export class ThemeService{
 	private _theme:BehaviorSubject<Theme>;
 	private observable:Observable<Theme>;
 
-  constructor(){
+	constructor(){
 		this.lightTheme = {
 			background: "#F1F1F1",
 			backgroundAlt: "#181818",

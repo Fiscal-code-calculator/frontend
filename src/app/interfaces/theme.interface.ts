@@ -1,5 +1,5 @@
 export interface Theme{
 	background:string;
-  backgroundAlt:string;
+	backgroundAlt:string;
 	primary:string;
 }

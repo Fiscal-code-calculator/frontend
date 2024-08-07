@@ -3,9 +3,9 @@ import { ThemeService } from "../../services/theme.service";
 import { Theme } from "../../interfaces/theme.interface";
 
 @Component({
-  selector: "app-main",
-  templateUrl: "./main.component.html",
-  styleUrl: "./main.component.scss"
+	selector: "app-main",
+	templateUrl: "./main.component.html",
+	styleUrl: "./main.component.scss"
 })
 
 export class MainComponent implements AfterViewInit{
