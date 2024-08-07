@@ -1,1 +1,6 @@
-<router-outlet></router-outlet>
+<div class="navbar">
+	<button (click)="setLightTheme()">Light theme</button>&nbsp;&nbsp;<button (click)="setDarkTheme()">Dark theme</button>
+</div>
+<div #bodyContainer>
+	<router-outlet></router-outlet>
+</div>

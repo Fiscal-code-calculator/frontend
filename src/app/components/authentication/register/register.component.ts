@@ -1,22 +1,29 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, EventEmitter, inject, OnInit, Output } from "@angular/core";
 import { HttpErrorResponse } from "@angular/common/http";
 import { NgForm } from "@angular/forms";
 import { AuthService } from "../../../services/auth.service";
-import { BackendResponse } from "../../../interfaces/BackendResponse.interface";
+import { BackendResponse } from "../../../interfaces/backendresponse.interface";
 
 @Component({
 	selector: "app-register",
 	templateUrl: "./register.component.html",
 	styleUrl: "../authentication.scss"
 })
+
 export class RegisterComponent implements OnInit{
+	@Output() switchMode:EventEmitter<void>;
 	private authService: AuthService;
 
 	constructor(){
+		this.switchMode = new EventEmitter<void>;
 		this.authService = inject(AuthService);
 	}
 
 	public ngOnInit(): void {}
+
+	public goToLogin():void{
+		this.switchMode.emit();
+	}
 
 	public registerSubmit(registerForm:NgForm): void {
 		if(registerForm.valid === true){
@@ -51,9 +58,8 @@ export class RegisterComponent implements OnInit{
 		}else{
 
 			//error management to be implemented for registration not possible
+			console.error("form not compiled correctly.");
 
 		}
   }
-
-
 }

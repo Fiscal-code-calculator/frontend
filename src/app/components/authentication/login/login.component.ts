@@ -1,9 +1,8 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, EventEmitter, inject, OnInit, Output } from "@angular/core";
 import { HttpErrorResponse } from "@angular/common/http";
-import { Router } from "@angular/router";
 import { NgForm } from "@angular/forms";
 import { AuthService } from "../../../services/auth.service";
-import { BackendResponse } from "../../../interfaces/BackendResponse.interface";
+import { BackendResponse } from "../../../interfaces/backendresponse.interface";
 
 @Component({
 	selector: "app-login",
@@ -12,13 +11,19 @@ import { BackendResponse } from "../../../interfaces/BackendResponse.interface";
 })
 
 export class LoginComponent implements OnInit{
+	@Output() switchMode:EventEmitter<void>;
 	private authService: AuthService;
 
-	constructor(private router:Router){
+	constructor(){
+		this.switchMode = new EventEmitter<void>;
 		this.authService = inject(AuthService);
 	}
 
 	public ngOnInit(): void {}
+
+	public goToRegister():void{
+		this.switchMode.emit();
+	}
 
   public loginSubmit(loginForm:NgForm): void {
 		if (loginForm.valid === true) {
@@ -28,12 +33,7 @@ export class LoginComponent implements OnInit{
 				this.authService.doLogin({email,password}).subscribe({
 					next: (data:BackendResponse) => {
 						if(data.check === true){
-
-							//estrarre il token che arriva dal server
-							localStorage.setItem("token","aaaaaaa");
-							this.router.navigate(["/home"]);
-
-
+							this.authService.authenticated = data.message;
 						}else{
 
 							//management of error login invalid
@@ -48,11 +48,12 @@ export class LoginComponent implements OnInit{
 
 					}
 				});
-    	}else{
+    	}
+  	}else{
 
-				// error management to be implemented for login not possible
+			// error management to be implemented for login not possible
+			console.error("form not compiled correctly.");
 
-			}
-  	}
+		}
 	}
 }

@@ -20,13 +20,13 @@
 				<input type="password" placeholder="Confirm Password" name="repeatpassword" id="repeatpassword" required ngModel>
 			</div>
 		</div>
-		
+
 		<div class="forgot-password">
-				<a class="link" routerLink="/login" href="/login"> Already have an account? </a>
+				<a class="link" (click)="goToLogin()"> Already have an account? </a>
 		</div>
-		
+
 		<button type="submit" [disabled]="!registerForm.valid"> REGISTER </button>
-	
+
 	</form>
 	<p> Continuando, accetti l’informativa sulla privacy contenuta nel d.lgs. 196/03 s.m.i. </p>
 </div>

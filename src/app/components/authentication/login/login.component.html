@@ -13,9 +13,9 @@
 			</div>
 		</div>
 
-		<div class="forgot-password"> <a class="link"> Forgot password? </a> </div>
-		
+		<div class="forgot-password"> <a class="link">Forgot password?</a> </div>
+
 		<button type="submit" [disabled]="!loginForm.valid"> LOGIN </button>
 	</form>
-	<a class="link" routerLink="/register"> Don't have an account yet? </a>
+	<a class="link" (click)="goToRegister()">Don't have an account yet?</a>
 </div>

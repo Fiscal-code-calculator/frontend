@@ -1,0 +1,6 @@
+<span *ngIf="loginMode === true">
+	<app-login (switchMode)="switchLoginRegister()"></app-login>
+</span>
+<span *ngIf="loginMode === false">
+	<app-register (switchMode)="switchLoginRegister()"></app-register>
+</span>

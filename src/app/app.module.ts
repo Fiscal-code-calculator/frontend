@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
+import { HttpClientModule, provideHttpClient, withInterceptors } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
 
 import { MainComponent } from "./components/main/main.component";
@@ -10,6 +10,9 @@ import { RegisterComponent } from "./components/authentication/register/register
 import { CalculatorComponent } from "./components/calculator/calculator.component";
 import { SettingsComponent } from "./components/profile/settings/settings.component";
 import { HistoryComponent } from "./components/profile/history/history.component";
+import { authInterceptor } from "./interceptors/auth.interceptor";
+import { HomepageComponent } from './components/homepage/homepage.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
 	declarations: [
@@ -18,7 +21,9 @@ import { HistoryComponent } from "./components/profile/history/history.component
 		RegisterComponent,
 		CalculatorComponent,
 		SettingsComponent,
-		HistoryComponent
+		HistoryComponent,
+  	HomepageComponent,
+   DashboardComponent
 	],
 	imports: [
 		BrowserModule,
@@ -26,7 +31,9 @@ import { HistoryComponent } from "./components/profile/history/history.component
 		FormsModule,
 		HttpClientModule
 	],
-	providers: [],
+	providers: [
+		provideHttpClient(withInterceptors([authInterceptor]))
+	],
 	bootstrap: [MainComponent]
 })
 

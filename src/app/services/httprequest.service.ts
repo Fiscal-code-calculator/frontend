@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { BackendResponse } from "../interfaces/BackendResponse.interface";
+import { BackendResponse } from "../interfaces/backendresponse.interface";
 import { LoginData } from "../interfaces/logindata.interface";
 import { RegisterData } from "../interfaces/registerdata.interface";
 
