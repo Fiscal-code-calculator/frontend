@@ -13,7 +13,8 @@ const routes: Routes = [
 	{ path: "", redirectTo: "homepage", pathMatch: "full" },
 	{ path: "homepage", component: HomepageComponent },
 
-	{ path: "dashboard", component: DashboardComponent, canActivate: [authGuardParent],canActivateChild: [authGuardChildren],children:[
+	{ path: "dashboard", canActivate: [authGuardParent], canActivateChild: [authGuardChildren], children: [
+		{ path: "", redirectTo: "calculator", pathMatch: "full" },
 		{ path: "calculator", component: CalculatorComponent },
 		{ path: "profile", canActivateChild: [authGuardChildren], children: [
 			{ path: "", redirectTo: "settings", pathMatch: "full" },
@@ -24,8 +25,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	imports:[RouterModule.forRoot(routes)],
-	exports:[RouterModule]
+	imports: [RouterModule.forRoot(routes)],
+	exports: [RouterModule]
 })
 
 export class AppRoutingModule{ }

@@ -3,6 +3,9 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { NgForm } from "@angular/forms";
 import { AuthService } from "../../../services/auth.service";
 import { BackendResponse } from "../../../interfaces/backendresponse.interface";
+import { ThemeService } from "../../../services/theme.service";
+import { Theme } from "../../../interfaces/theme.interface";
+
 
 @Component({
 	selector: "app-login",
@@ -11,49 +14,54 @@ import { BackendResponse } from "../../../interfaces/backendresponse.interface";
 })
 
 export class LoginComponent implements OnInit{
-	@Output() switchMode:EventEmitter<void>;
-	private authService: AuthService;
-
 	constructor(){
 		this.switchMode = new EventEmitter<void>;
 		this.authService = inject(AuthService);
+		this.themeService = inject(ThemeService);
 	}
 
-	public ngOnInit(): void {}
+	@Output() switchMode:EventEmitter<void>;
+	private authService: AuthService;
+	private themeService: ThemeService;
+	public lightTheme!: boolean;
 
-	public goToRegister():void{
-		this.switchMode.emit();
+	public ngAfterViewInit(): void {
+		this.themeService.theme.subscribe({
+		  	next: (theme: Theme) => {
+				this.lightTheme = theme.name === "light" ? true : false
+			}
+		});
 	}
 
-  public loginSubmit(loginForm:NgForm): void {
-		if (loginForm.valid === true) {
+	public ngOnInit(): void { }
+	public goToRegister(): void { this.switchMode.emit(); }
+
+	public loginSubmit(loginForm:NgForm): void {
+		if(loginForm.valid === true){
 			const email = loginForm.value.email;
 			const password = loginForm.value.password;
+
 			if(email && password){
 				this.authService.doLogin({email,password}).subscribe({
 					next: (data:BackendResponse) => {
 						if(data.check === true){
 							this.authService.authenticated = data.message;
-						}else{
-
-							//management of error login invalid
+						}
+						else{
+							// management of error login invalid
 							console.error(data.message);
-
 						}
 					},
 					error: (error:HttpErrorResponse) => {
-
-						//management of error login invalid
+						// management of error login invalid
 						console.error(error);
-
 					}
 				});
-    	}
-  	}else{
-
-			// error management to be implemented for login not possible
-			console.error("form not compiled correctly.");
-
+			}
+		}
+		else{
+				// error management to be implemented for login not possible
+				console.error("form not compiled correctly.");
 		}
 	}
 }

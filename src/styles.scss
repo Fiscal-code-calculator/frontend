@@ -9,19 +9,19 @@
     appearance: none;
 }
 
-body{background-color: var(--bg-color-dark-mode); overflow-x: hidden;}
+body{background: var(--background); overflow-x: hidden;}
 
 input, select{border: none; outline: none;}
 button{border: none; outline: none; cursor: pointer;}
 li{list-style: none;}
-hr{border: none;}
+hr{border: var(--textColor);}
 a{color: white; text-decoration: none; cursor: pointer;}
 a.link{
     width: fit-content;
     min-width: max-content;
     display: inline-block;
     position: relative;
-    color: white;
+    color: var(--textColor);
     text-decoration: none;
     cursor: pointer;
 }
@@ -34,19 +34,15 @@ a.link::after {
     transition: .25s;
     color: transparent;
 }
-a.link:hover::after, .link.active::after{height: 1.5px; transition: .25s; color: white;}
+a.link:hover::after, .link.active::after{height: 1.5px; transition: .25s; color: var(--textColor);}
 
 .center-flex{display: flex; align-items: center; justify-content: center;}
 .row{display: flex; flex-flow: row wrap;}
 .column{display: flex; flex-flow: column wrap;}
 
-:root{
-    --primary: #E63946;
-    --bg-color-dark-mode: #010101;
-    --bg-color-light-mode: #F1F1F1;
-    --message-red: #FD5D2B;
-    --message-green: #3CAC14;
-}
 
+
+//    --message-red: #FD5D2B;
+//    --message-green: #3CAC14;
 
 /************************************************/

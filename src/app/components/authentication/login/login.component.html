@@ -4,11 +4,11 @@
 	<form #loginForm="ngForm" id="authentication-box" class="column" (ngSubmit)="loginSubmit(loginForm)">
 		<div class="fields column">
 			<div class="field row">
-				<div class="icon email center-flex"> <span></span> </div>
+				<div class="icon email center-flex" [ngClass]="lightTheme ? 'dark' : 'light'"> <span></span> </div>
 				<input type="email" placeholder="E-mail" name="email" id="email" required email ngModel>
 			</div>
 			<div class="field row">
-				<div class="icon password center-flex"> <span></span> </div>
+				<div class="icon password center-flex" [ngClass]="lightTheme ? 'dark' : 'light'"> <span></span> </div>
 				<input type="password" placeholder="Password" name="password" id="password" required ngModel>
 			</div>
 		</div>

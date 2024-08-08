@@ -14,16 +14,16 @@ import { environment } from "../../environments/environment";
 export class AuthService{
 	private httprequest:HttpRequestService;
 
-	constructor(private router:Router){
+	constructor(private router: Router){
 		this.httprequest = inject(HttpRequestService);
 	}
 
-	public set authenticated(token:string){
+	public set authenticated(token: string){
 		localStorage.setItem("token",token);
 		this.router.navigate(["/dashboard"]);
 	}
 
-	public isAuthenticated():boolean{
+	public isAuthenticated(): boolean {
 		if(localStorage.getItem("token") !== null){
 			return true;
 		}else{

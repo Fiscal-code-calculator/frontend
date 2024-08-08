@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, inject, ViewChild} from "@angular/core";
+import {AfterViewInit, Component, ElementRef, inject, NgZone, Renderer2, ViewChild} from "@angular/core";
 import { ThemeService } from "../../services/theme.service";
 import { Theme } from "../../interfaces/theme.interface";
 
@@ -9,26 +9,31 @@ import { Theme } from "../../interfaces/theme.interface";
 })
 
 export class MainComponent implements AfterViewInit{
-	@ViewChild("bodyContainer") body!:ElementRef<HTMLDivElement>;
-	private themeService:ThemeService;
-
-	constructor(){
+	constructor(private host: ElementRef<HTMLElement>, private renderer: Renderer2){
 		this.themeService = inject(ThemeService);
 	}
+	@ViewChild("bodyContainer") body!:ElementRef<HTMLDivElement>;
+	private themeService: ThemeService;
+	lightTheme!: boolean;
+
 
 	public ngAfterViewInit(): void {
 		this.themeService.theme.subscribe({
-			next: (theme:Theme) => {
-				this.body.nativeElement.style.backgroundColor = theme.background;
+		  	next: (theme: Theme) => {
+				this.lightTheme = theme.name === "light" ? true : false
+				// this.body.nativeElement.style.backgroundColor = theme.background;
+				this.renderer.setStyle(document.body, 'background', theme.background);
+				this.host.nativeElement.style.setProperty('--background', theme.background);
+				this.host.nativeElement.style.setProperty('--backgroundAlt', theme.backgroundAlt);
+				this.host.nativeElement.style.setProperty('--backgroundAlt2', theme.backgroundAlt2);
+				this.host.nativeElement.style.setProperty('--primary', theme.primary);
+				this.host.nativeElement.style.setProperty('--textColor', theme.textColor);
 			}
-		})
+		});
 	}
 
-	public setLightTheme():void{
-		this.themeService.setLightTheme();
+	public changeTheme(): void {
+		this.themeService[this.lightTheme ? 'setDarkTheme' : 'setLightTheme'](); // bracket notation
 	}
-
-	public setDarkTheme():void{
-		this.themeService.setDarkTheme();
-	}
+	
 }

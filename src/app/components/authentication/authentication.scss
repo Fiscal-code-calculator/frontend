@@ -1,10 +1,10 @@
-#title{width: 100vw; height: 50px; margin: 25px 0 15px 0; color: white; text-align: center;}
+#title{width: 100vw; height: 50px; margin: 25px 0 15px 0; color: var(--textColor); text-align: center;}
 .wrapper{width: 100vw; height: calc(100vh - 90px);}
 
 #authentication-box{
     padding: 25px;
     border-radius: 15px;
-    background: #201F1F;
+    background-color: var(--backgroundAlt);
 
     .fields{
         gap: 15px;
@@ -15,23 +15,32 @@
         
             .icon{
                 width: 50px; height: 50px;
-                background: #363636;
+                background: var(--backgroundAlt2);
                 padding: 5px;
                 border-radius: 10px;
             }
 
             .icon span{width: 25px; height: 25px; display: block;}
-            .icon.user span{background: url('../../../assets/icons/user-white.svg') center/contain no-repeat;}
-            .icon.email span{background: url('../../../assets/icons/envelope-white.svg') center/contain no-repeat;}
-            .icon.password span{background: url('../../../assets/icons/lock-white.svg') center/contain no-repeat;}
-            .icon.confirm-password span{background: url('../../../assets/icons/confirm-password-white.svg') center/contain no-repeat;}
+            .icon.user.light span{background: url('../../../assets/icons/user-light.svg') center/contain no-repeat;}
+            .icon.email.light span{background: url('../../../assets/icons/envelope-light.svg') center/contain no-repeat;}
+            .icon.password.light span{background: url('../../../assets/icons/lock-light.svg') center/contain no-repeat;}
+            .icon.confirm-password.light span{background: url('../../../assets/icons/confirm-password-light.svg') center/contain no-repeat;}
+
+
+            // .icon.user.dark span{background: url('../../../assets/icons/user-dark.svg') center/contain no-repeat;}
+            .icon.email.dark span{background: url('../../../assets/icons/envelope-dark.svg') center/contain no-repeat;}
+            .icon.password.dark span{background: url('../../../assets/icons/lock-dark.svg') center/contain no-repeat;}
+            // .icon.confirm-password.dark span{background: url('../../../assets/icons/confirm-password-dark.svg') center/contain no-repeat;}
+
+
+
 
             input{
                 width: 250px;
                 padding: 10px 15px;
                 border-radius: 10px;
-                color: #eee;
-                background-color: #363636;
+                color: var(--textColor);
+                background-color: var(--backgroundAlt2);
             }
 
         }
@@ -42,19 +51,19 @@
         display: flex;
         justify-content: flex-end;
         
-        a{margin: 10px 0 20px 0; color: #eee; font-size: 0.9em; text-align: right;}
+        a{margin: 10px 0 20px 0; color: var(--textColor); font-size: 0.9em; text-align: right;}
     }
 
     button{
         height: 65px;
         border-radius: 10px;
-        background:var(--primary);
-        color: white;
+        background: var(--primary);
+        color: var(--textColor);
         font-size: 1.25em;
         font-weight: bold;
     }
-    button:hover{background: rgba($color: #E63946, $alpha: .75);}
-    button:disabled{background: #363636; cursor: not-allowed;}
+    button:hover{background: var(--primary);}
+    button:disabled{background: var(--backgroundAlt2); cursor: not-allowed;}
 }
 
-a.link, p{max-width: 350px; margin-top: 25px; color: white; font-size: 0.9em; text-align: center;}
+a.link, p{max-width: 350px; margin-top: 25px; color: var(--textColor); font-size: 0.9em; text-align: center;}

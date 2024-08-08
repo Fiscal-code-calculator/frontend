@@ -1,0 +1,9 @@
+.main_navbar{
+    position: absolute;
+    top: 25px; right: 25px;
+
+    button{width: 25px; height: 25px; margin: 5px;}
+
+    .darkTheme{background: url(../../../assets/icons/sun-empty.svg) center/cover no-repeat;}
+    .lightTheme{background: url(../../../assets/icons/sun-full.svg) center/cover no-repeat;}
+}

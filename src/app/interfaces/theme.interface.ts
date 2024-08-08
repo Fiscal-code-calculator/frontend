@@ -1,5 +1,9 @@
 export interface Theme{
-	background:string;
-	backgroundAlt:string;
-	primary:string;
+	name: string;
+	
+	background: string;
+	backgroundAlt: string;
+	backgroundAlt2: string;
+	primary: string;
+	textColor: string;
 }
