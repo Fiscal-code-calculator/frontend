@@ -3,6 +3,7 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { NgForm } from "@angular/forms";
 import { AuthService } from "../../../services/auth.service";
 import { BackendResponse } from "../../../interfaces/backendresponse.interface";
+import { ThemeService } from "../../../services/theme.service";
 
 @Component({
 	selector: "app-register",
@@ -13,16 +14,19 @@ import { BackendResponse } from "../../../interfaces/backendresponse.interface";
 export class RegisterComponent implements OnInit{
 	@Output() switchMode:EventEmitter<void>;
 	private authService: AuthService;
+	private themeService: ThemeService;
 
 	constructor(){
 		this.switchMode = new EventEmitter<void>;
 		this.authService = inject(AuthService);
+		this.themeService = inject(ThemeService);
 	}
 
-	public ngOnInit(): void {}
+	public ngOnInit(): void { }
+	public goToLogin(): void { this.switchMode.emit(); }
 
-	public goToLogin():void{
-		this.switchMode.emit();
+	public get lightTheme(): boolean {
+		return this.themeService.theme.name === "light";
 	}
 
 	public registerSubmit(registerForm:NgForm): void {
@@ -35,31 +39,23 @@ export class RegisterComponent implements OnInit{
 				this.authService.doRegister({fullname,email,password,repeatpassword}).subscribe({
 					next: (data:BackendResponse) => {
 						if(data.check === true){
-
 							//registrazione andata a buon fine
 							console.log(data.message);
-
 						}else{
-
 							//registrazione non effettuata, gestire l'errore
 							console.error(data.message);
-
 						}
 
 					},
 					error: (error:HttpErrorResponse) => {
-
 						//registrazione non effettuata, gestire l'errore
 						console.error(error);
-
 					}
 				});
 			}
 		}else{
-
 			//error management to be implemented for registration not possible
 			console.error("form not compiled correctly.");
-
 		}
 	}
 }

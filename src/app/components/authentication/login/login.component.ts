@@ -22,13 +22,11 @@ export class LoginComponent{
 		this.themeService = inject(ThemeService);
 	}
 
-	public get lightTheme():boolean{
+	public get lightTheme(): boolean {
 		return this.themeService.theme.name === "light";
 	}
 
-	public goToRegister(): void {
-		this.switchMode.emit();
-	}
+	public goToRegister(): void { this.switchMode.emit(); }
 
 	public loginSubmit(loginForm:NgForm): void {
 		if(loginForm.valid === true){
@@ -41,26 +39,20 @@ export class LoginComponent{
 							this.authService.authenticated = data.message;
 						}
 						else{
-
 							// management of error login invalid
 							console.error(data.message);
-
 						}
 					},
 					error: (error:HttpErrorResponse) => {
-
 						// management of error login invalid
 						console.error(error);
-
 					}
 				});
 			}
 		}
 		else{
-
-				// error management to be implemented for login not possible
-				console.error("form not compiled correctly.");
-
+			// error management to be implemented for login not possible
+			console.error("form not compiled correctly.");
 		}
 	}
 }
