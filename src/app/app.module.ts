@@ -4,15 +4,16 @@ import { HttpClientModule, provideHttpClient, withInterceptors } from "@angular/
 import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
 
+import { authInterceptor } from "./interceptors/auth.interceptor";
+
 import { MainComponent } from "./components/main/main.component";
 import { LoginComponent } from "./components/authentication/login/login.component";
 import { RegisterComponent } from "./components/authentication/register/register.component";
 import { CalculatorComponent } from "./components/calculator/calculator.component";
 import { SettingsComponent } from "./components/profile/settings/settings.component";
 import { HistoryComponent } from "./components/profile/history/history.component";
-import { authInterceptor } from "./interceptors/auth.interceptor";
-import { HomepageComponent } from './components/homepage/homepage.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { HomepageComponent } from "./components/homepage/homepage.component";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
 
 @NgModule({
 	declarations: [

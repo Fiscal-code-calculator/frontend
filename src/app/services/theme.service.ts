@@ -33,8 +33,12 @@ export class ThemeService{
 		this.observable = this._theme.asObservable();
 	}
 
-	public get theme(): Observable<Theme>{
+	public get changeTheme(): Observable<Theme>{
 		return this.observable;
+	}
+
+	public get theme(): Theme{
+		return this._theme.value;
 	}
 
 	public setLightTheme(): void{
