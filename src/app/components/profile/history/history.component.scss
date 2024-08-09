@@ -1,16 +1,18 @@
 #main{
-    width: calc(100vw - 250px);
+    width: 100%;
     display: flex;
     justify-content: center;
     margin: 50px 0 0 0;
     color: var(--textColor);
 
     .history{
+        width: 90%;
         .card{
-            background: var(--backgroundAlt);
+            justify-content: space-between;
             margin-bottom: 15px;
             padding: 25px;
             border-radius: 15px;
+            background: var(--backgroundAlt);
 
             .person h2{color: #E63946;}
         }

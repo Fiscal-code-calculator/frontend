@@ -1,5 +1,5 @@
 #main{
-    width: calc(100vw - 250px);
+    width: 100%;
     display: flex;
     justify-content: center;
     margin: 50px 0 0 0;
@@ -17,6 +17,9 @@
             color: var(--textColor);
             background: none;
         }
+
+        input:focus, select:focus{border-bottom: 2px solid var(--primary);}
+        label:focus-within{color: var(--primary) !important;}
     }
 
 }
