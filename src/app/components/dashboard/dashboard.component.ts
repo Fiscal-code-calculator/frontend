@@ -12,7 +12,8 @@ export class DashboardComponent{
 	@Output() switchMode: EventEmitter<void>;
 	private authService: AuthService;
 	private themeService: ThemeService;
-	
+	public sidebarState: boolean = true;
+
 	constructor(){
 		this.switchMode = new EventEmitter<void>;
 		this.authService = inject(AuthService);
@@ -23,5 +24,6 @@ export class DashboardComponent{
 		return this.themeService.theme.name === "light";
 	}
 
+	public toggleSidebar(){ this.sidebarState = !this.sidebarState }
 	public doLogout(): void { this.authService.doLogout(); }
 }

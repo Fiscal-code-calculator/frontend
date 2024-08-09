@@ -18,6 +18,12 @@ nav{
 		
 		.icon.user.light span{background: url('../../../assets/icons/user-light.svg') center/contain no-repeat;}
 		.icon.user.dark span{background: url('../../../assets/icons/user-dark.svg') center/contain no-repeat;}
+		
+		.icon.sidebar-open.light span{background: url('../../../assets/icons/sidebar-open-light.svg') center/contain no-repeat;}
+		.icon.sidebar-open.dark span{background: url('../../../assets/icons/sidebar-open-dark.svg') center/contain no-repeat;}
+		.icon.sidebar-close.light span{background: url('../../../assets/icons/sidebar-close-light.svg') center/contain no-repeat;}
+		.icon.sidebar-close.dark span{background: url('../../../assets/icons/sidebar-close-dark.svg') center/contain no-repeat;}
+
 	}
 }
 
@@ -39,7 +45,8 @@ nav{
 	ul li.active, ul li:hover{background-color: var(--backgroundAlt2); transition: .25s;}
 }
 
-.wrapper{padding: 75px 0 0 250px;}
+.wrapper.sidebarActive{padding: 75px 0 0 250px;}
+.wrapper.sidebarInactive{padding: 75px 0 0 0;}
 
 
 
