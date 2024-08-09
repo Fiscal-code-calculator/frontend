@@ -1,17 +1,24 @@
 <nav class="row">
 	<h2> Fiscal Code Calculator </h2>
 	<div class="items row">
-        <div class="icon sidebar center-flex" (click)="toggleSidebar()" [ngClass]="{'dark': lightTheme, 'light': !lightTheme, 'sidebar-open': sidebarState, 'sidebar-close': !sidebarState}"> <span></span> </div>
+        <div class="icon sidebar center-flex" (click)="toggleSidebar()"
+            [ngClass]="{
+                'dark': lightTheme,
+                'light': !lightTheme,
+                'sidebar-open': sidebarState,
+                'sidebar-close': !sidebarState
+            }">
+        <span></span> </div>
         <div class="icon user center-flex" [ngClass]="lightTheme ? 'dark' : 'light'"> <span></span> </div>
     </div>
 </nav>
 
 <div id="sidebar" *ngIf="sidebarState">
 	<ul>
-			<li routerLink="/dashboard/calculator" routerLinkActive="active"> Calculator </li>
-			<li routerLink="/dashboard/profile/settings" routerLinkActive="active"> Profile </li>
-			<li routerLink="/dashboard/profile/history" routerLinkActive="active"> History </li>
-			<li (click)="doLogout()"> Logout </li>
+        <li routerLink="/dashboard/calculator" routerLinkActive="active"> Calculator </li>
+        <li routerLink="/dashboard/profile/settings" routerLinkActive="active"> Profile </li>
+        <li routerLink="/dashboard/profile/history" routerLinkActive="active"> History </li>
+        <li (click)="doLogout()"> Logout </li>
 	</ul>
 </div>
 
