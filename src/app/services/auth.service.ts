@@ -12,23 +12,20 @@ import { environment } from "../../environments/environment";
 })
 
 export class AuthService{
-	private httprequest:HttpRequestService;
+	private httprequest: HttpRequestService;
 
 	constructor(private router: Router){
 		this.httprequest = inject(HttpRequestService);
 	}
 
 	public set authenticated(token: string){
-		localStorage.setItem("token",token);
+		localStorage.setItem("token", token);
 		this.router.navigate(["/dashboard"]);
 	}
 
 	public isAuthenticated(): boolean {
-		if(localStorage.getItem("token") !== null){
-			return true;
-		}else{
-			return false;
-		}
+		if(localStorage.getItem("token") !== null){ return true; }
+		else{ return false; }
 	}
 
 	public doLogin(form:LoginData):Observable<BackendResponse>{

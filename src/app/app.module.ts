@@ -14,6 +14,7 @@ import { SettingsComponent } from "./components/profile/settings/settings.compon
 import { HistoryComponent } from "./components/profile/history/history.component";
 import { HomepageComponent } from "./components/homepage/homepage.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
 	declarations: [
@@ -30,7 +31,8 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
 		BrowserModule,
 		AppRoutingModule,
 		FormsModule,
-		HttpClientModule
+		HttpClientModule,
+		RouterModule
 	],
 	providers: [
 		provideHttpClient(withInterceptors([authInterceptor]))

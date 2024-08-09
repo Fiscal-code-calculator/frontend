@@ -4,6 +4,7 @@ import { NgForm } from "@angular/forms";
 import { AuthService } from "../../../services/auth.service";
 import { BackendResponse } from "../../../interfaces/backendresponse.interface";
 import { ThemeService } from "../../../services/theme.service";
+import { Router } from "@angular/router";
 
 @Component({
 	selector: "app-register",
@@ -16,7 +17,7 @@ export class RegisterComponent implements OnInit{
 	private authService: AuthService;
 	private themeService: ThemeService;
 
-	constructor(){
+	constructor(private router: Router){
 		this.switchMode = new EventEmitter<void>;
 		this.authService = inject(AuthService);
 		this.themeService = inject(ThemeService);
@@ -29,7 +30,7 @@ export class RegisterComponent implements OnInit{
 		return this.themeService.theme.name === "light";
 	}
 
-	public registerSubmit(registerForm:NgForm): void {
+	public registerSubmit(registerForm: NgForm): void {
 		if(registerForm.valid === true){
 			const name: string = registerForm.value.name;
 			const surname: string = registerForm.value.surname;
@@ -38,25 +39,27 @@ export class RegisterComponent implements OnInit{
 			const repeatpassword: string = registerForm.value.repeatpassword;
 
 			if(name && surname && email && password && repeatpassword && password === repeatpassword){
-				this.authService.doRegister({name,surname,email,password,repeatpassword}).subscribe({
+				this.authService.doRegister({ name, surname, email, password, repeatpassword }).subscribe({
 					next: (data:BackendResponse) => {
 						if(data.check === true){
-							//registrazione andata a buon fine
+							// registrazione andata a buon fine
 							console.log(data.message);
+							this.router.navigate(["/homepage"]);
+
 						}else{
-							//registrazione non effettuata, gestire l'errore
+							// registrazione non effettuata, gestire l'errore
 							console.error(data.message);
 						}
 
 					},
 					error: (error:HttpErrorResponse) => {
-						//registrazione non effettuata, gestire l'errore
+						// registrazione non effettuata, gestire l'errore
 						console.error(error);
 					}
 				});
 			}
 		}else{
-			//error management to be implemented for registration not possible
+			// error management to be implemented for registration not possible
 			console.error("form not compiled correctly.");
 		}
 	}

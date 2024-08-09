@@ -1,9 +1,12 @@
 .main_navbar{
     position: absolute;
-    top: 25px; right: 25px;
+    top: 13px; right: 25px;
+    z-index: 99;
 
-    button{width: 25px; height: 25px; margin: 5px;}
+    button{width: 40px; height: 40px; margin: 5px; padding: 5px; background: none;}
+    button:hover{width: 40px; height: 40px; border-radius: 5px; background: var(--backgroundAlt); transition: .25s;}
 
-    .darkTheme{background: url(../../../assets/icons/sun-empty.svg) center/cover no-repeat;}
-    .lightTheme{background: url(../../../assets/icons/sun-full.svg) center/cover no-repeat;}
+    button span{width: 25px; height: 25px; display: block;}
+    .darkTheme span{background: url(../../../assets/icons/sun-empty.svg) center/cover no-repeat;}
+    .lightTheme span{background: url(../../../assets/icons/sun-full.svg) center/cover no-repeat;}
 }
