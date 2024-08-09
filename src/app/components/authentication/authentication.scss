@@ -9,9 +9,13 @@
     .fields{
         gap: 15px;
 
+        .name-surname input{
+            width: 115px !important;
+        }
+
         .field{
-            gap: 20px;
             width: 100%;
+            gap: 20px;
         
             .icon{
                 width: 50px; height: 50px;
@@ -26,13 +30,10 @@
             .icon.password.light span{background: url('../../../assets/icons/lock-light.svg') center/contain no-repeat;}
             .icon.confirm-password.light span{background: url('../../../assets/icons/confirm-password-light.svg') center/contain no-repeat;}
 
-
             .icon.user.dark span{background: url('../../../assets/icons/user-dark.svg') center/contain no-repeat;}
             .icon.email.dark span{background: url('../../../assets/icons/envelope-dark.svg') center/contain no-repeat;}
             .icon.password.dark span{background: url('../../../assets/icons/lock-dark.svg') center/contain no-repeat;}
             .icon.confirm-password.dark span{background: url('../../../assets/icons/confirm-password-dark.svg') center/contain no-repeat;}
-
-
 
 
             input{

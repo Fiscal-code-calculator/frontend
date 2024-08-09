@@ -1,5 +1,6 @@
 export interface RegisterData{
-	fullname: string,
+	name: string,
+	surname: string,
 	email: string,
 	password: string,
 	repeatpassword: string

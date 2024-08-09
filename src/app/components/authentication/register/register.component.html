@@ -3,9 +3,11 @@
 <div class="wrapper center-flex column">
 	<form #registerForm="ngForm" id="authentication-box" class="column" (ngSubmit)="registerSubmit(registerForm)">
 		<div class="fields column">
-			<div class="field row">
+			<div class="field row name-surname">
 				<div class="icon user center-flex" [ngClass]="lightTheme ? 'dark' : 'light'"> <span></span> </div>
-				<input type="text" placeholder="Full name" name="fullname" id="fullname" required ngModel>
+				<!-- <input type="text" placeholder="Full name" name="fullname" id="fullname" required ngModel> -->
+				<input type="text" placeholder="Name" name="name" id="name" required ngModel>
+				<input type="text" placeholder="Surname" name="surname" id="surname" required ngModel>
 			</div>
 			<div class="field row">
 				<div class="icon email center-flex" [ngClass]="lightTheme ? 'dark' : 'light'"> <span></span> </div>
