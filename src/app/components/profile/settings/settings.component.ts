@@ -6,4 +6,4 @@ import { Component } from "@angular/core";
 	styleUrl: "./settings.component.scss"
 })
 
-export class SettingsComponent {}
+export class SettingsComponent{ }

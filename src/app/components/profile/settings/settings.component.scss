@@ -3,9 +3,9 @@
     display: flex;
     justify-content: center;
     margin: 50px 0 0 0;
-    color: white;
+    color: var(--textColor);
 
-    .infos{width: 90%; padding: 25px; border-radius: 20px; background: #181818;}
+    .infos{width: 90%; padding: 25px; border-radius: 20px; background: var(--backgroundAlt);}
 
     .field{
         margin: 10px;
@@ -13,8 +13,8 @@
         input, select{
             margin-left: 10px;
             padding: 5px;
-            border-bottom: 2px solid white;
-            color: #ffffffCC;
+            border-bottom: 2px solid var(--textColor);
+            color: var(--textColor);
             background: none;
         }
     }

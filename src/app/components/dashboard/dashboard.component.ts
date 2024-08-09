@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, HostListener, inject, OnInit, Output } from "@angular/core";
 import { AuthService } from "../../services/auth.service";
 import { ThemeService } from "../../services/theme.service";
 
@@ -24,6 +24,19 @@ export class DashboardComponent{
 		return this.themeService.theme.name === "light";
 	}
 
-	public toggleSidebar(){ this.sidebarState = !this.sidebarState }
+	@HostListener('window:resize', ['$event'])
+	onResize(event: Event): void {
+		this.toggleSidebar('resize');
+	}
+
+	public toggleSidebar(func?: string){
+		if(func === 'resize'){
+			if(window.innerWidth <= 700){ this.sidebarState = false; }
+			else{ this.sidebarState = true; }
+		}
+		else{
+			this.sidebarState = !this.sidebarState;
+		}
+	}
 	public doLogout(): void { this.authService.doLogout(); }
 }
