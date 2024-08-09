@@ -31,12 +31,12 @@ export class RegisterComponent implements OnInit{
 
 	public registerSubmit(registerForm:NgForm): void {
 		if(registerForm.valid === true){
-			const name: string = registerForm.value.fullname;
-			const surname: string = registerForm.value.fullname;
+			const name: string = registerForm.value.name;
+			const surname: string = registerForm.value.surname;
 			const email: string = registerForm.value.email;
 			const password: string = registerForm.value.password;
 			const repeatpassword: string = registerForm.value.repeatpassword;
-			
+
 			if(name && surname && email && password && repeatpassword && password === repeatpassword){
 				this.authService.doRegister({name,surname,email,password,repeatpassword}).subscribe({
 					next: (data:BackendResponse) => {
