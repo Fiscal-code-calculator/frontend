@@ -12,12 +12,12 @@ import { ThemeService } from "../../../services/theme.service";
 })
 
 export class LoginComponent{
-	@Output() switchMode:EventEmitter<void>;
+	@Output() switchMode: EventEmitter<number>;
 	private authService: AuthService;
 	private themeService: ThemeService;
 
 	constructor(){
-		this.switchMode = new EventEmitter<void>;
+		this.switchMode = new EventEmitter<number>;
 		this.authService = inject(AuthService);
 		this.themeService = inject(ThemeService);
 	}
@@ -26,7 +26,8 @@ export class LoginComponent{
 		return this.themeService.theme.name === "light";
 	}
 
-	public goToRegister(): void { this.switchMode.emit(); }
+	public goToRegister(): void { this.switchMode.emit(1); }
+	public goToForgotPassword(): void { this.switchMode.emit(2); }
 
 	public loginSubmit(loginForm:NgForm): void {
 		if(loginForm.valid === true){

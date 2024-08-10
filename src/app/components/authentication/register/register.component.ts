@@ -13,18 +13,18 @@ import { Router } from "@angular/router";
 })
 
 export class RegisterComponent implements OnInit{
-	@Output() switchMode:EventEmitter<void>;
+	@Output() switchMode:EventEmitter<number>;
 	private authService: AuthService;
 	private themeService: ThemeService;
 
 	constructor(private router: Router){
-		this.switchMode = new EventEmitter<void>;
+		this.switchMode = new EventEmitter<number>;
 		this.authService = inject(AuthService);
 		this.themeService = inject(ThemeService);
 	}
 
 	public ngOnInit(): void { }
-	public goToLogin(): void { this.switchMode.emit(); }
+	public goToLogin(): void { this.switchMode.emit(0); }
 
 	public get lightTheme(): boolean {
 		return this.themeService.theme.name === "light";

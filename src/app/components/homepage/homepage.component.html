@@ -1,8 +1,11 @@
 <h1 id="title"> Fiscal Code Calculator </h1>
 
-<span *ngIf="loginMode === true">
-	<app-login (switchMode)="switchLoginRegister()"></app-login>
+<span *ngIf="pageToShow === 0">
+	<app-login (switchMode)="switchAuthentication($event)"></app-login>
 </span>
-<span *ngIf="loginMode === false">
-	<app-register (switchMode)="switchLoginRegister()"></app-register>
+<span *ngIf="pageToShow === 1">
+	<app-register (switchMode)="switchAuthentication($event)"></app-register>
+</span>
+<span *ngIf="pageToShow === 2">
+	<app-forgot-password (switchMode)="switchAuthentication($event)"></app-forgot-password>
 </span>

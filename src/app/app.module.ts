@@ -15,6 +15,8 @@ import { HistoryComponent } from "./components/profile/history/history.component
 import { HomepageComponent } from "./components/homepage/homepage.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { RouterModule } from "@angular/router";
+import { ResetPasswordComponent } from './components/authentication/reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './components/authentication/forgot-password/forgot-password.component';
 
 @NgModule({
 	declarations: [
@@ -25,7 +27,9 @@ import { RouterModule } from "@angular/router";
 		SettingsComponent,
 		HistoryComponent,
 		HomepageComponent,
-		DashboardComponent
+		DashboardComponent,
+  ResetPasswordComponent,
+  ForgotPasswordComponent
 	],
 	imports: [
 		BrowserModule,

@@ -28,12 +28,16 @@ export class AuthService{
 		else{ return false; }
 	}
 
-	public doLogin(form:LoginData):Observable<BackendResponse>{
-		return this.httprequest.postRequest(environment.backendUrl + "/users/login",form);
+	public doLogin(form: LoginData): Observable<BackendResponse> {
+		return this.httprequest.postRequest(environment.backendUrl + "/users/login", form);
 	}
 
-	public doRegister(form:RegisterData):Observable<BackendResponse>{
-		return this.httprequest.postRequest(environment.backendUrl + "/users/register",form);
+	public doRegister(form: RegisterData): Observable<BackendResponse> {
+		return this.httprequest.postRequest(environment.backendUrl + "/users/register", form);
+	}
+
+	public sendEmail(form: RegisterData): Observable<BackendResponse> {
+		return this.httprequest.postRequest(environment.backendUrl + "/users/sendEmail", form); // to modify
 	}
 
 	public doLogout():void{

@@ -8,10 +8,12 @@ import { SettingsComponent } from "./components/profile/settings/settings.compon
 import { HistoryComponent } from "./components/profile/history/history.component";
 import { HomepageComponent } from "./components/homepage/homepage.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { ResetPasswordComponent } from "./components/authentication/reset-password/reset-password.component";
 
 const routes: Routes = [
 	{ path: "", redirectTo: "homepage", pathMatch: "full" },
 	{ path: "homepage", component: HomepageComponent },
+	{ path: "reset-password/:token", component: ResetPasswordComponent },
 
 	{ path: "dashboard", component:DashboardComponent, canActivate: [authGuardParent], canActivateChild: [authGuardChildren], children: [
 		{ path: "calculator", component: CalculatorComponent },

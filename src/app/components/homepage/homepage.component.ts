@@ -6,22 +6,20 @@ import { Component } from "@angular/core";
 	styleUrl: "./homepage.component.scss"
 })
 
-export class HomepageComponent {
-	private _loginMode:boolean;
+export class HomepageComponent{
+	private _component: number = 0;
 
-	constructor(){
-		this._loginMode = true;
+	constructor(){ }
+
+	public get pageToShow(): number {
+		return this._component;
 	}
 
-	public get loginMode():boolean{
-		return this._loginMode;
-	}
-
-	public switchLoginRegister():void{
-		if(this._loginMode === true){
-			this._loginMode = false;
-		}else{
-			this._loginMode = true;
-		}
+	public switchAuthentication(page: any): void {
+		console.log(page);
+		
+		if(page === 0){ this._component = 0; }
+		else if(page === 1){ this._component = 1; }
+		else{ this._component = 2; }
 	}
 }

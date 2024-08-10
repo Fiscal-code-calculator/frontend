@@ -13,7 +13,7 @@ export class MainComponent implements AfterViewInit{
 	private themeService: ThemeService;
 	private _lightTheme: boolean = true;
 
-	constructor(private host: ElementRef<HTMLElement>, private cdr: ChangeDetectorRef, private renderer: Renderer2){
+	constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef, private host: ElementRef<HTMLElement>){
 		this.themeService = inject(ThemeService);
 	}
 
