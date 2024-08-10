@@ -21,8 +21,8 @@
         <li (click)="doLogout()"> Logout </li>
 	</ul>
 
-    <div class="user center-flex" routerLink="/dashboard/profile/settings,">
-        <img src="../../../assets/icons/user-dark.svg" alt="user-icon">
+    <div class="user center-flex" routerLink="/dashboard/profile/settings">
+        <span [ngClass]="lightTheme ? 'dark' : 'light'"></span>
         <p> Hello, {{ name }}! </p>
     </div>
 </div>

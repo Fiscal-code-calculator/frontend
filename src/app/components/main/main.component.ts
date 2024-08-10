@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, inject, NgZone, Renderer2, ViewChild} from "@angular/core";
+import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, inject, NgZone, Renderer2, ViewChild} from "@angular/core";
 import { ThemeService } from "../../services/theme.service";
 import { Theme } from "../../interfaces/theme.interface";
 
@@ -11,11 +11,10 @@ import { Theme } from "../../interfaces/theme.interface";
 export class MainComponent implements AfterViewInit{
 	@ViewChild("bodyContainer") body!:ElementRef<HTMLDivElement>;
 	private themeService: ThemeService;
-	private _lightTheme: boolean;
+	private _lightTheme: boolean = true;
 
-	constructor(private host: ElementRef<HTMLElement>, private renderer: Renderer2){
+	constructor(private host: ElementRef<HTMLElement>, private cdr: ChangeDetectorRef, private renderer: Renderer2){
 		this.themeService = inject(ThemeService);
-		this._lightTheme = true;
 	}
 
 	public get lightTheme():boolean{
@@ -25,7 +24,7 @@ export class MainComponent implements AfterViewInit{
 	public ngAfterViewInit(): void {
 		this.themeService.changeTheme.subscribe({
 		  	next: (theme: Theme) => {
-				this._lightTheme = (theme.name === "light") ? true : false ;
+				this._lightTheme = (theme.name === "light") ? true : false;
 				this.renderer.setStyle(document.body, "background", theme.background);
 				this.host.nativeElement.style.setProperty("--background", theme.background);
 				this.host.nativeElement.style.setProperty("--backgroundAlt", theme.backgroundAlt);
@@ -34,6 +33,8 @@ export class MainComponent implements AfterViewInit{
 				this.host.nativeElement.style.setProperty("--textColor", theme.textColor);
 				this.host.nativeElement.style.setProperty("--messageRed", theme.messageRed);
 				this.host.nativeElement.style.setProperty("--messageGreen", theme.messageGreen);
+			
+				this.cdr.detectChanges();
 			}
 		});
 	}

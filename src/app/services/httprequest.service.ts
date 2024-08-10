@@ -10,13 +10,13 @@ import { RegisterData } from "../interfaces/registerdata.interface";
 })
 
 export class HttpRequestService {
-	constructor(private http:HttpClient) { }
+	constructor(private http: HttpClient){ }
 
-	public getRequest(url:string):Observable<BackendResponse>{
+	public getRequest(url: string): Observable<BackendResponse> {
 		return this.http.get<BackendResponse>(url);
 	}
 
-	public postRequest(url:string,body:LoginData|RegisterData):Observable<BackendResponse>{
-		return this.http.post<BackendResponse>(url,body);
+	public postRequest(url: string, body: LoginData | RegisterData): Observable<BackendResponse> {
+		return this.http.post<BackendResponse>(url, body);
 	}
 }

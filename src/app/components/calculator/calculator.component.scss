@@ -9,16 +9,18 @@
     .field{
         margin: 10px;
         
-        label{justify-content: space-between; margin-right: 10px;}
-        input, select{
-            width: 80%;
-            padding: 10px 15px;
-            border-radius: 5px;
-            color: var(--textColor);
-            background: var(--backgroundAlt2);
+        label{
+            justify-content: space-between;
+        
+            input, select{
+                width: 80%;
+                padding: 10px 15px;
+                border-radius: 5px;
+                color: var(--textColor);
+                background: var(--backgroundAlt2);
+            }
+            input:focus, select:focus{border-radius: 5px 5px 0 0; border-bottom: 2px solid var(--primary);}
         }
-
-        input:focus, select:focus{border-radius: 5px 5px 0 0; border-bottom: 2px solid var(--primary);}
         label:focus-within{color: var(--primary) !important;}
     }
 

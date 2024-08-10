@@ -51,7 +51,19 @@ nav{
 		gap: 15px;
 		border-radius: 10px;
 		background: var(--backgroundAlt2);
+		transition: .25s;
 		cursor: pointer;
+		
+		span{width: 20px; height: 20px; display: block;}
+		span.light{background: url('../../../assets/icons/user-light.svg') center/contain no-repeat;}
+		span.dark{background: url('../../../assets/icons/user-dark.svg') center/contain no-repeat;}
+	}
+	.user:hover{
+		color: white;
+		background: var(--primary);
+		transition: .25s;
+
+		span{background: url('../../../assets/icons/user-light.svg') center/contain no-repeat;}
 	}
 
 }
