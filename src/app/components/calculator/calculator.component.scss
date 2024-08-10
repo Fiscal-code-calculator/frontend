@@ -1,0 +1,43 @@
+#main{
+    width: 100%;
+    justify-content: flex-start;
+    margin: 40px 0 0 0;
+    color: var(--textColor);
+
+    .infos{width: 90%; padding: 25px; border-radius: 20px; background: var(--backgroundAlt);}
+
+    .field{
+        margin: 10px;
+        
+        label{justify-content: space-between; margin-right: 10px;}
+        input, select{
+            width: 80%;
+            padding: 10px 15px;
+            border-radius: 5px;
+            color: var(--textColor);
+            background: var(--backgroundAlt2);
+        }
+
+        input:focus, select:focus{border-radius: 5px 5px 0 0; border-bottom: 2px solid var(--primary);}
+        label:focus-within{color: var(--primary) !important;}
+    }
+
+    button.calculate{
+        width: 90%;
+        margin: 15px;
+        padding: 17px;
+        border-radius: 10px;
+        color: var(--textColor);
+        background: var(--backgroundAlt);
+        transition: .25s;
+    }
+    button.calculate:hover{color: white; background: var(--messageGreen); transition: .25s;}
+
+}
+
+
+/************************************************/
+
+@media screen and (max-width: 700px){
+    #main{width: 100vw; margin: 50px 0 0 0;}
+}

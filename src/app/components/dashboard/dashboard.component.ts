@@ -13,6 +13,7 @@ export class DashboardComponent{
 	private authService: AuthService;
 	private themeService: ThemeService;
 	public sidebarState: boolean = true;
+	public name = 'John'; // example name, to implement a method to retrieve user datas
 
 	constructor(){
 		this.switchMode = new EventEmitter<void>;

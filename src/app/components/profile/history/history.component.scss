@@ -7,6 +7,8 @@
 
     .history{
         width: 90%;
+        padding-bottom: 75px;
+
         .card{
             justify-content: space-between;
             margin-bottom: 15px;
@@ -17,6 +19,17 @@
             .person h2{color: #E63946;}
         }
     }
+
+    button.calculate{
+        width: 90%;
+        margin: 15px;
+        padding: 17px;
+        border-radius: 10px;
+        color: var(--textColor);
+        background: var(--backgroundAlt);
+        transition: .25s;
+    }
+    button.calculate:hover{color: white; background: var(--primary); transition: .25s;}
 
 }
 

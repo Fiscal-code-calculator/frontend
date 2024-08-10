@@ -9,7 +9,7 @@
                 'sidebar-open': !sidebarState
             }">
         <span></span> </div>
-        <div class="icon user center-flex" [ngClass]="lightTheme ? 'dark' : 'light'"> <span></span> </div>
+        <!-- <div class="icon user center-flex" [ngClass]="lightTheme ? 'dark' : 'light'"> <span></span> </div> -->
     </div>
 </nav>
 
@@ -20,8 +20,17 @@
         <li routerLink="/dashboard/profile/history" routerLinkActive="active"> History </li>
         <li (click)="doLogout()"> Logout </li>
 	</ul>
+
+    <div class="user center-flex" routerLink="/dashboard/profile/settings,">
+        <img src="../../../assets/icons/user-dark.svg" alt="user-icon">
+        <p> Hello, {{ name }}! </p>
+    </div>
 </div>
 
 <div class="wrapper" [ngClass]="sidebarState ? 'sidebarActive' : 'sidebarInactive'">
     <router-outlet></router-outlet>
+</div>
+
+<div class="center-flex" id="add-button" routerLink="/dashboard/calculator">
+    <p> + </p>
 </div>

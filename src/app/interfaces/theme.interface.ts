@@ -5,4 +5,7 @@ export interface Theme{
 	backgroundAlt2: string;
 	primary: string;
 	textColor: string;
+
+	messageRed: string;
+	messageGreen: string;
 }

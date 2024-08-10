@@ -22,6 +22,25 @@
         label:focus-within{color: var(--primary) !important;}
     }
 
+    .btns{
+        width: 90%;
+        gap: 10px;
+        justify-content: space-between;
+        
+        button{
+            width: 49%;
+            margin: 15px 0;
+            padding: 17px;
+            border-radius: 10px;
+            color: var(--textColor);
+            background: var(--backgroundAlt);
+            transition: .25s;
+        }
+        button:hover{color: white; transition: .25s;}
+        button.discard:hover{background: var(--messageRed);}
+        button.save:hover{background: var(--messageGreen);}
+    }
+
 }
 
 

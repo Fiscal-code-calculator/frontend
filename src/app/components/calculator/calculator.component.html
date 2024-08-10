@@ -1,1 +1,46 @@
-<p style="color: var(--textColor);"> Fiscal Code Calculator Page </p>
+<div class="center-flex column" id="main">
+
+    <div class="infos column">
+        <div class="field">
+            <label class="center-flex" for="name"> Name
+                <input type="text" id="name" placeholder="John" value="First Name">
+            </label>
+        </div>
+
+        <div class="field">
+            <label class="center-flex" for="surname"> Surname
+                <input type="text" id="surname" placeholder="Doe" value="Last Name">
+            </label>
+        </div>
+
+        <div class="field">
+            <label class="center-flex" for="gender"> Gender
+                <select id="gender">
+                    <option value="male"> M </option>
+                    <option value="female"> F </option>
+                </select>
+            </label>
+        </div>
+
+        <div class="field">
+            <label class="center-flex" for="place-of-birth"> Place of birth
+                <input type="text" id="place-of-birth" placeholder="Rome" value="Rome">
+            </label>
+        </div>
+
+        <div class="field">
+            <label class="center-flex" for="province"> Province
+                <input type="text" id="provice" placeholder="RM" value="RM">
+            </label>
+        </div>
+
+        <div class="field">
+            <label class="center-flex" for="birthdate"> Birthdate
+                <input type="date" id="birthdate" placeholder="1998-08-09" value="1998-08-09" onfocus="(this.type='date')" onblur="(this.type='text')">
+            </label>
+        </div>
+    </div>
+
+    <button class="calculate"> CALCULATE </button>
+
+</div>

@@ -32,6 +32,8 @@ export class MainComponent implements AfterViewInit{
 				this.host.nativeElement.style.setProperty("--backgroundAlt2", theme.backgroundAlt2);
 				this.host.nativeElement.style.setProperty("--primary", theme.primary);
 				this.host.nativeElement.style.setProperty("--textColor", theme.textColor);
+				this.host.nativeElement.style.setProperty("--messageRed", theme.messageRed);
+				this.host.nativeElement.style.setProperty("--messageGreen", theme.messageGreen);
 			}
 		});
 	}

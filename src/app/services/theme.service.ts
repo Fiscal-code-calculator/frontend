@@ -19,7 +19,9 @@ export class ThemeService{
 			backgroundAlt: "#dedede",
 			backgroundAlt2: "#cccccc",
 			primary: "#E63946",
-			textColor: "#010101"
+			textColor: "#010101",
+			messageRed: "#FD5D2B",
+			messageGreen: "#3CAC14"
 		}
 		this.darkTheme = {
 			name: "dark",
@@ -27,7 +29,9 @@ export class ThemeService{
 			backgroundAlt: "#201F1F",
 			backgroundAlt2: "#363636",
 			primary: "#E63946",
-			textColor: "#F1F1F1"
+			textColor: "#F1F1F1",
+			messageRed: "#FD5D2B",
+			messageGreen: "#3CAC14"
 		}
 		this._theme = new BehaviorSubject<Theme>(this.lightTheme);
 		this.observable = this._theme.asObservable();

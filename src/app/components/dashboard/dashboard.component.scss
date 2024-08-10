@@ -36,13 +36,51 @@ nav{
 	background: var(--backgroundAlt);
 
 	ul li{
-		margin: 10px 0;
+		margin: 10px 10px 10px 0;
 		padding: 10px;
 		border-radius: 10px;
 		transition: .25s;
 		cursor: pointer;
 	}
 	ul li.active, ul li:hover{background-color: var(--backgroundAlt2); transition: .25s;}
+
+	.user{
+		width: 85%; height: 50px;
+		position: absolute;
+		bottom: 25px;
+		gap: 15px;
+		border-radius: 10px;
+		background: var(--backgroundAlt2);
+		cursor: pointer;
+	}
+
+}
+
+#add-button{
+	width: 40px; height: 40px;
+	position: fixed;
+	bottom: 25px;
+	right: 25px;
+	border-radius: 20px;
+	background: var(--backgroundAlt2);
+	transition: .25s;
+	cursor: pointer;
+
+	p{
+		width: 25px; height: 25px;
+		margin-bottom: 18px;
+		color: var(--textColor);
+		font-size: 30px;
+		text-align: center;
+	}
+}
+
+#add-button:hover{
+	background: var(--primary);
+	scale: 1.1;
+	transition: .25s;
+
+	p{color: white;}
 }
 
 .wrapper.sidebarActive{padding: 75px 0 0 250px;}
