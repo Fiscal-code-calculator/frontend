@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { HomepageMode } from "../../interfaces/homepagemode.enum";
 
 @Component({
 	selector: "app-homepage",
@@ -7,19 +8,23 @@ import { Component } from "@angular/core";
 })
 
 export class HomepageComponent{
-	private _component: number = 0;
+	private _pageToShow:number;
 
-	constructor(){ }
-
-	public get pageToShow(): number {
-		return this._component;
+	constructor(){
+		this._pageToShow = 0;
 	}
 
-	public switchAuthentication(page: any): void {
-		console.log(page);
-		
-		if(page === 0){ this._component = 0; }
-		else if(page === 1){ this._component = 1; }
-		else{ this._component = 2; }
+	public get pageToShow():number{
+		return this._pageToShow;
+	}
+
+	public switchAuthentication(modeChosen:HomepageMode):void{
+		if(modeChosen === HomepageMode.LOGIN_MODE){
+			this._pageToShow = 0;
+		}else if(modeChosen === HomepageMode.REGISTER_MODE){
+			this._pageToShow = 1;
+		}else if(modeChosen === HomepageMode.FORGOT_PASSWORD_MODE){
+			this._pageToShow = 2;
+		}
 	}
 }

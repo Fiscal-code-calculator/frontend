@@ -1,0 +1,5 @@
+export enum HomepageMode{
+	LOGIN_MODE,
+	REGISTER_MODE,
+	FORGOT_PASSWORD_MODE
+}

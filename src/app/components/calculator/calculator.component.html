@@ -1,24 +1,23 @@
-<div class="center-flex column" id="main">
-
+<form #fiscalCodeForm="ngForm" class="center-flex column" id="main" (ngSubmit)="createFiscalCode(fiscalCodeForm)">
     <div class="infos column">
         <div class="field">
             <label class="center-flex" for="name">
                 <p> Name </p>
-                <input type="text" id="name" placeholder="John" value="First Name">
+                <input type="text" id="name" name="name" placeholder="John" ngModel>
             </label>
         </div>
 
         <div class="field">
             <label class="center-flex" for="surname">
                 <p> Surname </p>
-                <input type="text" id="surname" placeholder="Doe" value="Last Name">
+                <input type="text" id="surname" name="surname" placeholder="Doe" ngModel>
             </label>
         </div>
 
         <div class="field">
             <label class="center-flex" for="gender">
                 <p> Gender </p>
-                <select id="gender">
+                <select id="gender" name="gender" ngModel>
                     <option value="male"> M </option>
                     <option value="female"> F </option>
                 </select>
@@ -26,27 +25,18 @@
         </div>
 
         <div class="field">
-            <label class="center-flex" for="place-of-birth">
+            <label class="center-flex" for="placeofbirth">
                 <p> Place of birth </p>
-                <input type="text" id="place-of-birth" placeholder="Rome" value="Rome">
+                <input type="text" id="placeofbirth" name="placeofbirth" placeholder="RM" ngModel>
             </label>
         </div>
 
         <div class="field">
-            <label class="center-flex" for="province">
-                <p> Province </p>
-                <input type="text" id="provice" placeholder="RM" value="RM">
-            </label>
-        </div>
-
-        <div class="field">
-            <label class="center-flex" for="birthdate">
-                <p> Birthdate </p>
-                <input type="date" id="birthdate" placeholder="1998-08-09" value="1998-03-09">
+            <label class="center-flex" for="dateofbirth">
+                <p> Date of birth </p>
+                <input type="date" id="dateofbirth" name="dateofbirth" placeholder="1998-08-09" ngModel>
             </label>
         </div>
     </div>
-
     <button class="calculate"> CALCULATE </button>
-
-</div>
+	</form>

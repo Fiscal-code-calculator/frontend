@@ -11,7 +11,7 @@ export class ThemeService{
 	private darkTheme: Theme;
 	private _theme: BehaviorSubject<Theme>;
 	private observable: Observable<Theme>;
-	private browserTheme: boolean = true; // true: lightTheme, false: darkTheme
+	private browserTheme!: boolean; // true: lightTheme, false: darkTheme
 
 	constructor(){
 		this.lightTheme = {
@@ -34,7 +34,7 @@ export class ThemeService{
 			messageRed: "#FD5D2B",
 			messageGreen: "#3CAC14"
 		}
-		this.browserTheme = window.matchMedia('(prefers-color-scheme: light)').matches;
+		this.browserTheme = window.matchMedia("(prefers-color-scheme: light)").matches;
 		this._theme = new BehaviorSubject<Theme>(this.browserTheme ? this.lightTheme : this.darkTheme);
 		this.observable = this._theme.asObservable();
 	}

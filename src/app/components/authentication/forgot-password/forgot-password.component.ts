@@ -1,53 +1,66 @@
-import { Component, inject } from '@angular/core';
-import { Location } from '@angular/common';
-import { NgForm } from '@angular/forms';
-import { AuthService } from '../../../services/auth.service';
-import { ThemeService } from '../../../services/theme.service';
-import { BackendResponse } from '../../../interfaces/backendresponse.interface';
-import { HttpErrorResponse } from '@angular/common/http';
+import { Component, EventEmitter, inject, Output } from "@angular/core";
+import { HttpErrorResponse } from "@angular/common/http";
+import { NgForm } from "@angular/forms";
+import { AuthService } from "../../../services/auth.service";
+import { ThemeService } from "../../../services/theme.service";
+import { BackendResponse } from "../../../interfaces/backendresponse.interface";
+import { HomepageMode } from "../../../interfaces/homepagemode.enum";
 
 @Component({
-  selector: 'app-forgot-password',
-  templateUrl: './forgot-password.component.html',
-  styleUrls: ['./forgot-password.component.scss', '../authentication.scss']
+  selector: "app-forgot-password",
+  templateUrl: "./forgot-password.component.html",
+  styleUrls: ["./forgot-password.component.scss", "../authentication.scss"]
 })
 export class ForgotPasswordComponent{
+	@Output() switchMode:EventEmitter<HomepageMode>;
   private authService: AuthService;
 	private themeService: ThemeService;
 
-  constructor(private location: Location){
+  constructor(){
+		this.switchMode = new EventEmitter<HomepageMode>();
 		this.authService = inject(AuthService);
 		this.themeService = inject(ThemeService);
 	}
 
-  public goBack(): void { this.location.back(); }
-  public get lightTheme(): boolean {
+	public get lightTheme(): boolean {
 		return this.themeService.theme.name === "light";
 	}
 
-  // draft
+  public goToLogin(): void {
+		this.switchMode.emit(HomepageMode.LOGIN_MODE)
+	}
+
   public emailSubmit(forgotPasswordForm: NgForm): void {
 		if(forgotPasswordForm.valid === true){
-			const email = forgotPasswordForm.value.email;
+			const email:string = forgotPasswordForm.value.email;
 			if(email){
-				this.authService.sendEmail(email).subscribe({
+				this.authService.sendRequestRestorePassword({email}).subscribe({
 					next: (data: BackendResponse) => {
 						if(data.check === true){
-							this.authService.authenticated = data.message;
-						}
-						else{
-              console.error(data.message); // management of error login invalid
+
+							//cosa dobbiamo fare dopo che viene inviata la richiesta dell'email?
+							console.log(data.message);
+
+						}else{
+
+							// management of error recovery password invalid
+              console.error(data.message);
+
 						}
 					},
 					error: (error: HttpErrorResponse) => {
-						console.error(error); // management of error login invalid
+
+						// management of error recovery password invalid
+						console.error(error);
+
 					}
 				});
 			}
-		}
-		else{
-			console.error("form not compiled correctly."); // error management to be implemented for login not possible
+		}else{
+
+			// error management to be implemented for recovery password not possible
+			console.error("form not compiled correctly.");
+
 		}
 	}
-
 }

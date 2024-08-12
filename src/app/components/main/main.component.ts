@@ -33,7 +33,6 @@ export class MainComponent implements AfterViewInit{
 				this.host.nativeElement.style.setProperty("--textColor", theme.textColor);
 				this.host.nativeElement.style.setProperty("--messageRed", theme.messageRed);
 				this.host.nativeElement.style.setProperty("--messageGreen", theme.messageGreen);
-			
 				this.cdr.detectChanges();
 			}
 		});

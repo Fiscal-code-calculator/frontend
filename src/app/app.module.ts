@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { HttpClientModule, provideHttpClient, withInterceptors } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
+import { RouterModule } from "@angular/router";
 import { AppRoutingModule } from "./app-routing.module";
 
 import { authInterceptor } from "./interceptors/auth.interceptor";
@@ -14,9 +15,8 @@ import { SettingsComponent } from "./components/profile/settings/settings.compon
 import { HistoryComponent } from "./components/profile/history/history.component";
 import { HomepageComponent } from "./components/homepage/homepage.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
-import { RouterModule } from "@angular/router";
-import { ResetPasswordComponent } from './components/authentication/reset-password/reset-password.component';
-import { ForgotPasswordComponent } from './components/authentication/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from "./components/authentication/reset-password/reset-password.component";
+import { ForgotPasswordComponent } from "./components/authentication/forgot-password/forgot-password.component";
 
 @NgModule({
 	declarations: [
@@ -28,8 +28,8 @@ import { ForgotPasswordComponent } from './components/authentication/forgot-pass
 		HistoryComponent,
 		HomepageComponent,
 		DashboardComponent,
-  ResetPasswordComponent,
-  ForgotPasswordComponent
+		ResetPasswordComponent,
+		ForgotPasswordComponent
 	],
 	imports: [
 		BrowserModule,

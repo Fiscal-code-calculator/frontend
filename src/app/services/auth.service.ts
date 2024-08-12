@@ -6,6 +6,7 @@ import { LoginData } from "../interfaces/logindata.interface";
 import { BackendResponse } from "../interfaces/backendresponse.interface";
 import { RegisterData } from "../interfaces/registerdata.interface";
 import { environment } from "../../environments/environment";
+import { RestorePasswordData } from "../interfaces/restorepassworddata.interface";
 
 @Injectable({
 	providedIn: "root"
@@ -24,8 +25,11 @@ export class AuthService{
 	}
 
 	public isAuthenticated(): boolean {
-		if(localStorage.getItem("token") !== null){ return true; }
-		else{ return false; }
+		if(localStorage.getItem("token") !== null){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	public doLogin(form: LoginData): Observable<BackendResponse> {
@@ -36,8 +40,12 @@ export class AuthService{
 		return this.httprequest.postRequest(environment.backendUrl + "/users/register", form);
 	}
 
-	public sendEmail(form: RegisterData): Observable<BackendResponse> {
-		return this.httprequest.postRequest(environment.backendUrl + "/users/sendEmail", form); // to modify
+	public sendRequestRestorePassword(form: RestorePasswordData): Observable<BackendResponse> {
+		return this.httprequest.postRequest(environment.backendUrl + "/users/restorepassword", form);
+	}
+
+	public getProfile(): Observable<BackendResponse> {
+		return this.httprequest.getRequest(environment.backendUrl + "/users");
 	}
 
 	public doLogout():void{

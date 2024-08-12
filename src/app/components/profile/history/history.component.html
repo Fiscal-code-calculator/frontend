@@ -1,14 +1,12 @@
 <div id="main">
-
-    <div class="history">
-        <div class="card row" *ngFor="let item of [0, 1, 2, 3, 4, 5]">
-            <div class="person">
-                <h2> John Doe </h2>
-                <p class="gender"> Male </p>
-                <p> Rome (RM) - 08/02/1998 </p>
-            </div>
-            <h2> DOEJHN98P08H501K </h2>
-        </div>
-    </div>
-
+	<div class="history">
+		<div class="card row" *ngFor="let item of fiscalcodes">
+			<div class="person">
+				<h2> {{item.name}} {{item.surname}} </h2>
+				<p class="gender"> {{item.gender}} </p>
+				<p> ??? ({{item.place_of_birth}}) - {{formatDate(item.date_of_birth)}} </p>
+			</div>
+			<h2> {{item.fiscal_code_calculated}} </h2>
+		</div>
+	</div>
 </div>

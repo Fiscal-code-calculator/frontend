@@ -4,6 +4,7 @@ import { NgForm } from "@angular/forms";
 import { AuthService } from "../../../services/auth.service";
 import { BackendResponse } from "../../../interfaces/backendresponse.interface";
 import { ThemeService } from "../../../services/theme.service";
+import { HomepageMode } from "../../../interfaces/homepagemode.enum";
 
 @Component({
 	selector: "app-login",
@@ -12,12 +13,12 @@ import { ThemeService } from "../../../services/theme.service";
 })
 
 export class LoginComponent{
-	@Output() switchMode: EventEmitter<number>;
+	@Output() switchMode: EventEmitter<HomepageMode>;
 	private authService: AuthService;
 	private themeService: ThemeService;
 
 	constructor(){
-		this.switchMode = new EventEmitter<number>;
+		this.switchMode = new EventEmitter<HomepageMode>();
 		this.authService = inject(AuthService);
 		this.themeService = inject(ThemeService);
 	}
@@ -26,8 +27,13 @@ export class LoginComponent{
 		return this.themeService.theme.name === "light";
 	}
 
-	public goToRegister(): void { this.switchMode.emit(1); }
-	public goToForgotPassword(): void { this.switchMode.emit(2); }
+	public goToRegister(): void {
+		this.switchMode.emit(HomepageMode.REGISTER_MODE);
+	}
+
+	public goToForgotPassword(): void {
+		this.switchMode.emit(HomepageMode.FORGOT_PASSWORD_MODE);
+	}
 
 	public loginSubmit(loginForm:NgForm): void {
 		if(loginForm.valid === true){
@@ -37,23 +43,27 @@ export class LoginComponent{
 				this.authService.doLogin({email,password}).subscribe({
 					next: (data:BackendResponse) => {
 						if(data.check === true){
-							this.authService.authenticated = data.message;
-						}
-						else{
+							this.authService.authenticated = <string>data.message;
+						}else{
+
 							// management of error login invalid
 							console.error(data.message);
+
 						}
 					},
 					error: (error:HttpErrorResponse) => {
+
 						// management of error login invalid
 						console.error(error);
+
 					}
 				});
 			}
-		}
-		else{
+		}else{
+
 			// error management to be implemented for login not possible
 			console.error("form not compiled correctly.");
+
 		}
 	}
 }

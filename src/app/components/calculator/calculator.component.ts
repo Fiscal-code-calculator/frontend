@@ -1,8 +1,9 @@
-import { Component, OnInit } from "@angular/core";
-import { HttpRequestService } from "../../services/httprequest.service";
-import { environment } from "../../../environments/environment";
+import { Component, inject, OnInit } from "@angular/core";
+import { HttpErrorResponse } from "@angular/common/http";
+import { NgForm } from "@angular/forms";
+import { AuthService } from "../../services/auth.service";
+import { FiscalCodeService } from "../../services/fiscalcode.service";
 import { BackendResponse } from "../../interfaces/backendresponse.interface";
-import { RegisterData } from "../../interfaces/registerdata.interface";
 
 @Component({
 	selector: "app-calculator",
@@ -11,16 +12,34 @@ import { RegisterData } from "../../interfaces/registerdata.interface";
 })
 
 export class CalculatorComponent implements OnInit{
-	constructor(private requestService: HttpRequestService){ }
-	private userData!: RegisterData;
+	private fiscalcodeService: FiscalCodeService;
+	private authService:AuthService;
 
-	ngOnInit(): void {
-		this.requestService.postRequest(environment.backendUrl + '/fiscalcodes', this.userData).subscribe({
+	constructor(){
+		this.fiscalcodeService = inject(FiscalCodeService);
+		this.authService = inject(AuthService);
+	}
+
+	public ngOnInit(): void {}
+
+	public createFiscalCode(fiscalCodeForm:NgForm):void{
+		this.fiscalcodeService.createFiscalCode(fiscalCodeForm.value).subscribe({
 			next: (response: BackendResponse) => {
-				console.debug(response);
+
+				//response of new fiscalcode
+				console.log(response);
+
 			},
-			error: (err) => { },
-			complete: () => { }
+			error: (error:HttpErrorResponse) => {
+				if(error.status === 401 || error.status === 403){
+					this.authService.doLogout();
+				}else{
+
+					//management of the error received from the server
+					console.error(error);
+
+				}
+			}
 		})
 	}
 }

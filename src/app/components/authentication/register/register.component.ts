@@ -1,10 +1,10 @@
-import { Component, EventEmitter, inject, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, inject, Output } from "@angular/core";
 import { HttpErrorResponse } from "@angular/common/http";
 import { NgForm } from "@angular/forms";
 import { AuthService } from "../../../services/auth.service";
 import { BackendResponse } from "../../../interfaces/backendresponse.interface";
 import { ThemeService } from "../../../services/theme.service";
-import { Router } from "@angular/router";
+import { HomepageMode } from "../../../interfaces/homepagemode.enum";
 
 @Component({
 	selector: "app-register",
@@ -12,19 +12,20 @@ import { Router } from "@angular/router";
 	styleUrl: "../authentication.scss"
 })
 
-export class RegisterComponent implements OnInit{
-	@Output() switchMode:EventEmitter<number>;
+export class RegisterComponent{
+	@Output() switchMode:EventEmitter<HomepageMode>;
 	private authService: AuthService;
 	private themeService: ThemeService;
 
-	constructor(private router: Router){
-		this.switchMode = new EventEmitter<number>;
+	constructor(){
+		this.switchMode = new EventEmitter<HomepageMode>();
 		this.authService = inject(AuthService);
 		this.themeService = inject(ThemeService);
 	}
 
-	public ngOnInit(): void { }
-	public goToLogin(): void { this.switchMode.emit(0); }
+	public goToLogin(): void {
+		this.switchMode.emit(HomepageMode.LOGIN_MODE);
+	}
 
 	public get lightTheme(): boolean {
 		return this.themeService.theme.name === "light";
@@ -42,25 +43,32 @@ export class RegisterComponent implements OnInit{
 				this.authService.doRegister({ name, surname, email, password, repeatpassword }).subscribe({
 					next: (data:BackendResponse) => {
 						if(data.check === true){
-							// registrazione andata a buon fine
-							console.log(data.message);
-							this.router.navigate(["/homepage"]);
 
+							// registrazione andata a buon fine (stampare il messaggio informativo)
+							console.log(data.message);
+
+							registerForm.resetForm();
 						}else{
+
 							// registrazione non effettuata, gestire l'errore
 							console.error(data.message);
+
 						}
 
 					},
 					error: (error:HttpErrorResponse) => {
+
 						// registrazione non effettuata, gestire l'errore
 						console.error(error);
+
 					}
 				});
 			}
 		}else{
+
 			// error management to be implemented for registration not possible
 			console.error("form not compiled correctly.");
+
 		}
 	}
 }
