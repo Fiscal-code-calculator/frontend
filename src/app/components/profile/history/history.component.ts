@@ -26,7 +26,8 @@ export class HistoryComponent implements OnInit{
 		return this._fiscalcodes;
 	}
 
-	public formatDate(date:Date):string{
+	public formatDate(descriptiondate:string):string{
+		const date:Date = new Date(descriptiondate);
 		const day:number = date.getDate();
 		const month:number = date.getMonth();
 		const year:number = date.getFullYear();

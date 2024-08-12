@@ -48,6 +48,7 @@ export class RegisterComponent{
 							console.log(data.message);
 
 							registerForm.resetForm();
+							this.switchMode.emit(HomepageMode.LOGIN_MODE);
 						}else{
 
 							// registrazione non effettuata, gestire l'errore

@@ -2,7 +2,7 @@ export interface FiscalCode{
 	fiscal_code_id:number,
 	name:string,
 	surname:string,
-	date_of_birth:Date,
+	date_of_birth:string,
 	place_of_birth:string,
 	gender:string,
 	fiscal_code_calculated:string,
