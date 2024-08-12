@@ -12,10 +12,16 @@ import { User } from "../../../interfaces/user.interface";
 
 export class SettingsComponent implements OnInit{
 	private authService:AuthService;
-	private _user!:User;
+	private _user:User;
 
 	constructor(){
 		this.authService = inject(AuthService);
+		this._user = {
+			user_id:0,
+			name:"",
+			surname:"",
+			email:""
+		}
 	}
 
 	public get user():User{

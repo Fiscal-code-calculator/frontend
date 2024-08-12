@@ -16,13 +16,14 @@ export class DashboardComponent implements OnInit{
 	private authService: AuthService;
 	private themeService: ThemeService;
 	public sidebarState: boolean;
-	public name!:string;
+	public name:string;
 
 	constructor(){
 		this.switchMode = new EventEmitter<void>;
 		this.authService = inject(AuthService);
 		this.themeService = inject(ThemeService);
 		this.sidebarState = true;
+		this.name = "";
 	}
 
 	public get lightTheme(): boolean {
