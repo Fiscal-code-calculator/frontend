@@ -14,6 +14,9 @@
 		<div class="forgot-password"> <a class="link" (click)="goToForgotPassword()">Forgot password?</a> </div>
 
 		<button type="submit" [disabled]="!loginForm.valid"> LOGIN </button>
+
+		<p class="error" *ngIf="errorMessage"> {{ errorMessage }} </p>
+		<p class="success" *ngIf="successMessage"> {{ successMessage }} </p>
 	</form>
 	<a class="link" (click)="goToRegister()">Don't have an account yet?</a>
 </div>

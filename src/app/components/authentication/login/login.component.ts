@@ -16,6 +16,8 @@ export class LoginComponent{
 	@Output() switchMode: EventEmitter<HomepageMode>;
 	private authService: AuthService;
 	private themeService: ThemeService;
+	public errorMessage: string = "";
+	public successMessage: string = "";
 
 	constructor(){
 		this.switchMode = new EventEmitter<HomepageMode>();
@@ -42,20 +44,15 @@ export class LoginComponent{
 			if(email && password){
 				this.authService.doLogin({email,password}).subscribe({
 					next: (data:BackendResponse) => {
-						if(data.check === true){
-							this.authService.authenticated = <string>data.message;
-						}else{
-
-							// management of error login invalid
-							console.error(data.message);
-
-						}
+						this.authService.authenticated = <string>data.message;
 					},
-					error: (error:HttpErrorResponse) => {
-
-						// management of error login invalid
-						console.error(error);
-
+					error: (error: HttpErrorResponse) => {
+						if(error.status == 404){
+							this.errorMessage = "Utente non trovato!";
+						}
+						else if(error.status == 401){
+							this.errorMessage = "Credenziali non valide!";
+						}
 					}
 				});
 			}
