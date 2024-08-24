@@ -1,3 +1,20 @@
 {
-	"welcome_message": "Messaggio di prova"
+
+	"login": {
+		"submitButton": "ACCEDI",
+		"forgotPassword": "Password dimenticata?",
+		"registerRedirect": "Ancora non hai un account?"
+	},
+
+	"register": {
+		"submitButton": "REGISTRATI",
+		"formPlaceholders": {
+			"name": "nome",
+			"surname": "cognome",
+			"confirmPassword": "conferma password"
+		},
+		"loginRedirect": "Hai già un account?",
+		"law": " Continuando, accetti l'informativa sulla privacy contenuta nel d.lgs. 196/03 s.m.i."
+	}
+
 }
