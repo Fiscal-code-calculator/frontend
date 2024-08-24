@@ -13,12 +13,14 @@ export class MainComponent implements AfterViewInit{
 	@ViewChild("bodyContainer") body!:ElementRef<HTMLDivElement>;
 	private themeService: ThemeService;
 	private _lightTheme: boolean = true;
-	private translate:TranslateService;
+	private translate: TranslateService;
+	public language: string;
 
 	constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef, private host: ElementRef<HTMLElement>){
 		this.themeService = inject(ThemeService);
 		this.translate = inject(TranslateService);
 		this.translate.setDefaultLang("it");
+		this.language = this.translate.store.defaultLang;
 	}
 
 	public get lightTheme():boolean{
@@ -42,15 +44,14 @@ export class MainComponent implements AfterViewInit{
 		});
 	}
 
-	public switchLanguage(language:string):void{
-		this.translate.use(language);
+	public switchLanguage(): void {
+		this.language = this.translate.store.currentLang;
+		this.translate.use(this.translate.store.currentLang == 'it' ? 'en' : 'it');
 	}
 
 	public changeTheme(): void {
-		if(this._lightTheme === true){
-			this.themeService.setDarkTheme();
-		}else{
-			this.themeService.setLightTheme();
-		}
+		this._lightTheme === true ?
+		this.themeService.setDarkTheme() :
+		this.themeService.setLightTheme();
 	}
 }

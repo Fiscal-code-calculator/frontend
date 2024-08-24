@@ -4,6 +4,7 @@ import { NgForm } from "@angular/forms";
 import { AuthService } from "../../services/auth.service";
 import { FiscalCodeService } from "../../services/fiscalcode.service";
 import { BackendResponse } from "../../interfaces/backendresponse.interface";
+import { Router } from "@angular/router";
 
 @Component({
 	selector: "app-calculator",
@@ -15,7 +16,7 @@ export class CalculatorComponent implements OnInit{
 	private fiscalcodeService: FiscalCodeService;
 	private authService:AuthService;
 
-	constructor(){
+	constructor(private router: Router){
 		this.fiscalcodeService = inject(FiscalCodeService);
 		this.authService = inject(AuthService);
 	}
@@ -28,7 +29,7 @@ export class CalculatorComponent implements OnInit{
 
 				//response of new fiscalcode
 				console.log(response);
-
+				this.router.navigate(["/dashboard/profile/history"]);
 			},
 			error: (error:HttpErrorResponse) => {
 				if(error.status === 401 || error.status === 403){

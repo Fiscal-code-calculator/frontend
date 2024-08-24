@@ -19,6 +19,7 @@ import { HomepageComponent } from "./components/homepage/homepage.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { ResetPasswordComponent } from "./components/authentication/reset-password/reset-password.component";
 import { ForgotPasswordComponent } from "./components/authentication/forgot-password/forgot-password.component";
+import { DashboardDefaultMessageComponent } from './components/dashboard-default-message/dashboard-default-message.component';
 
 export function HttpLoaderFactory(http:HttpClient){
 	return new TranslateHttpLoader(http);
@@ -35,7 +36,8 @@ export function HttpLoaderFactory(http:HttpClient){
 		HomepageComponent,
 		DashboardComponent,
 		ResetPasswordComponent,
-		ForgotPasswordComponent
+		ForgotPasswordComponent,
+  DashboardDefaultMessageComponent
 	],
 	imports: [
 		BrowserModule,

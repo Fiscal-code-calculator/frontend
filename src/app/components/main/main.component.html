@@ -1,11 +1,9 @@
-<div class="main_navbar">
+<div class="main_navbar row">
+	<button class="center-flex" [ngClass]="language == 'it' ? 'italian' : 'english'" (click)="switchLanguage()"> <span></span> </button>
 	<button class="center-flex" [ngClass]="lightTheme ? 'lightTheme' : 'darkTheme'" (click)="changeTheme()"> <span></span> </button>
 </div>
 
-<button (click)="switchLanguage('it')">Italiano</button>
-<button (click)="switchLanguage('en')">English</button>
-
-{{"welcome_message" | translate}}
+<!-- {{ "welcome_message" | translate }} -->
 
 <div #bodyContainer>
 	<router-outlet></router-outlet>
