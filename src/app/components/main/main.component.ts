@@ -1,6 +1,7 @@
 import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, inject, NgZone, Renderer2, ViewChild} from "@angular/core";
 import { ThemeService } from "../../services/theme.service";
 import { Theme } from "../../interfaces/theme.interface";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
 	selector: "app-main",
@@ -12,9 +13,12 @@ export class MainComponent implements AfterViewInit{
 	@ViewChild("bodyContainer") body!:ElementRef<HTMLDivElement>;
 	private themeService: ThemeService;
 	private _lightTheme: boolean = true;
+	private translate:TranslateService;
 
 	constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef, private host: ElementRef<HTMLElement>){
 		this.themeService = inject(ThemeService);
+		this.translate = inject(TranslateService);
+		this.translate.setDefaultLang("it");
 	}
 
 	public get lightTheme():boolean{
@@ -36,6 +40,10 @@ export class MainComponent implements AfterViewInit{
 				this.cdr.detectChanges();
 			}
 		});
+	}
+
+	public switchLanguage(language:string):void{
+		this.translate.use(language);
 	}
 
 	public changeTheme(): void {

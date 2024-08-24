@@ -1,8 +1,10 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { HttpClientModule, provideHttpClient, withInterceptors } from "@angular/common/http";
+import { HttpClient, HttpClientModule, provideHttpClient, withInterceptors } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
+import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { AppRoutingModule } from "./app-routing.module";
 
 import { authInterceptor } from "./interceptors/auth.interceptor";
@@ -17,6 +19,10 @@ import { HomepageComponent } from "./components/homepage/homepage.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { ResetPasswordComponent } from "./components/authentication/reset-password/reset-password.component";
 import { ForgotPasswordComponent } from "./components/authentication/forgot-password/forgot-password.component";
+
+export function HttpLoaderFactory(http:HttpClient){
+	return new TranslateHttpLoader(http);
+}
 
 @NgModule({
 	declarations: [
@@ -36,7 +42,14 @@ import { ForgotPasswordComponent } from "./components/authentication/forgot-pass
 		AppRoutingModule,
 		FormsModule,
 		HttpClientModule,
-		RouterModule
+		RouterModule,
+		TranslateModule.forRoot({
+			loader: {
+				provide:TranslateLoader,
+				useFactory:HttpLoaderFactory,
+				deps:[HttpClient]
+			}
+		})
 	],
 	providers: [
 		provideHttpClient(withInterceptors([authInterceptor]))

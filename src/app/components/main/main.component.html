@@ -2,6 +2,11 @@
 	<button class="center-flex" [ngClass]="lightTheme ? 'lightTheme' : 'darkTheme'" (click)="changeTheme()"> <span></span> </button>
 </div>
 
+<button (click)="switchLanguage('it')">Italiano</button>
+<button (click)="switchLanguage('en')">English</button>
+
+{{"welcome_message" | translate}}
+
 <div #bodyContainer>
 	<router-outlet></router-outlet>
 </div>
