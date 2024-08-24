@@ -1,3 +1,51 @@
 {
-	"welcome_message": "Test message"
+
+	"login": {
+		"submitButton": "LOGIN",
+		"forgotPassword": "Forgot password?",
+		"registerRedirect": "Don't have an account? Register"
+	},
+
+	"register": {
+		"submitButton": "REGISTER",
+		"formPlaceholders": {
+			"name": "Name",
+			"surname": "Surname",
+			"confirmPassword": "Confirm password"
+		},
+		"loginRedirect": "Already have an account? Login",
+		"law": "By continuing, you accept the privacy policy contained in Legislative Decree 196/03."
+	},
+
+	"dashboard": {
+		"sidebar": {
+			"calculatorRedirect": "Calculator",
+			"settingsRedirect": "Settings",
+			"historyRedirect": "History",
+			"loginRedirect": "Logout",
+			"greeting": "Hello"
+			}
+		},
+
+	"calculator": {
+		"name": "Name",
+		"surname": "Surname",
+		"gender": "Gender",
+		"placeOfBirth": "Place of birth",
+		"dateOfBirth": "Date of birth"
+	},
+
+	"profile": {
+		"settings": {
+			"title": "Profile",
+			"name": "Name",
+			"surname": "Surname",
+			"email": "E-mail",
+			"saveButton": "Save",
+			"discardButton": "Discard"
+			},
+
+		"history": { }
+		}
+
 }

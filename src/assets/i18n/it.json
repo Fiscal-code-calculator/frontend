@@ -3,18 +3,49 @@
 	"login": {
 		"submitButton": "ACCEDI",
 		"forgotPassword": "Password dimenticata?",
-		"registerRedirect": "Ancora non hai un account?"
+		"registerRedirect": "Ancora non hai un account? Registrati"
 	},
 
 	"register": {
 		"submitButton": "REGISTRATI",
 		"formPlaceholders": {
-			"name": "nome",
-			"surname": "cognome",
-			"confirmPassword": "conferma password"
+			"name": "Nome",
+			"surname": "Cognome",
+			"confirmPassword": "Conferma Password"
 		},
-		"loginRedirect": "Hai già un account?",
+		"loginRedirect": "Hai già un account? Accedi",
 		"law": " Continuando, accetti l'informativa sulla privacy contenuta nel d.lgs. 196/03 s.m.i."
-	}
+	},
+
+	"dashboard": {
+		"sidebar": {
+			"calculatorRedirect": "Calcolatrice",
+			"settingsRedirect": "Opzioni",
+			"historyRedirect": "Cronologia",
+			"loginRedirect": "Esci",
+			"greeting": "Ciao"
+			}
+		},
+
+	"calculator": {
+		"name": "Nome",
+		"surname": "Cognome",
+		"gender": "Sesso",
+		"placeOfBirth": "Comune di nascita",
+		"dateOfBirth": "Data di nascita"
+	},
+
+	"profile": {
+		"settings": {
+			"title": "Profilo",
+			"name": "Nome",
+			"surname": "Cognome",
+			"email": "E-mail",
+			"saveButton": "Salva",
+			"discardButton": "Elimina"
+			},
+
+		"history": { }
+		}
 
 }
