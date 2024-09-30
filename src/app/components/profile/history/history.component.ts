@@ -38,7 +38,7 @@ export class HistoryComponent implements OnInit{
 	public ngOnInit(): void {
 		this.fiscalcodeService.getAllFiscalCodes().subscribe({
 			next: (data:BackendResponse) => {
-				console.log(data.message.toString.length < 1 ? this.history = true : "cia");
+				data.message.toString.length < 1 ? this.history = false : true;
 				const array:FiscalCode[] = <FiscalCode[]>data.message;
 				this._fiscalcodes = array;
 			},

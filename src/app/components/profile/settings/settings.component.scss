@@ -43,29 +43,44 @@
         button.save:hover{background: var(--messageGreen);}
     }
 
-    .delete-profile{
+    h3.controls{width: 90%; margin-top: 20px; text-align: left;}
+
+    .control-btns{
         width: 90%;
-        margin-top: 25px;
+        margin-top: 15px;
 
         button{
             border-radius: 10px;
             color: var(--textColor);
             background: var(--backgroundAlt);
+            margin-right: 15px;
             padding: 10px;
             transition: .25s;
 
             span{
                 width: 40px; height: 40px;
                 display: block;
-                background: url(../../../../assets/icons/delete-profile-white.svg);
                 margin: 5px;
             }
         }
-        button:hover{
+        button:hover{transition: .25s;}
+
+        button.delete-profile span{
+            background: url(../../../../assets/icons/delete-profile-white.svg);
+        }
+        button.delete-profile:hover{
             background: var(--backgroundAlt2);
-            transition: .25s;
             p{color: var(--primary);}
             span{background: url(../../../../assets/icons/delete-profile.svg);}
+        }
+
+        button.change-password span{
+            background: url(../../../../assets/icons/change-password-white.svg);
+        }
+        button.change-password:hover{
+            background: var(--backgroundAlt2);
+            p{color: var(--primary);}
+            span{background: url(../../../../assets/icons/change-password.svg);}
         }
     }
 
