@@ -15,6 +15,7 @@ export class HistoryComponent implements OnInit{
 	private fiscalcodeService:FiscalCodeService;
 	private authService:AuthService;
 	private _fiscalcodes: FiscalCode[];
+	public history!: boolean;
 
 	constructor(){
 		this.fiscalcodeService = inject(FiscalCodeService);
@@ -22,11 +23,11 @@ export class HistoryComponent implements OnInit{
 		this._fiscalcodes = [];
 	}
 
-	public get fiscalcodes():FiscalCode[]{
+	public get fiscalcodes(): FiscalCode[] {
 		return this._fiscalcodes;
 	}
 
-	public formatDate(descriptiondate:string):string{
+	public formatDate(descriptiondate:string): string {
 		const date:Date = new Date(descriptiondate);
 		const day:number = date.getDate();
 		const month:number = date.getMonth();
@@ -37,6 +38,7 @@ export class HistoryComponent implements OnInit{
 	public ngOnInit(): void {
 		this.fiscalcodeService.getAllFiscalCodes().subscribe({
 			next: (data:BackendResponse) => {
+				console.log(data.message.toString.length < 1 ? this.history = true : "cia");
 				const array:FiscalCode[] = <FiscalCode[]>data.message;
 				this._fiscalcodes = array;
 			},
@@ -44,10 +46,8 @@ export class HistoryComponent implements OnInit{
 				if(error.status === 401 || error.status === 403){
 					this.authService.doLogout();
 				}else{
-
 					//gestire l'errore http
 					console.error(error);
-
 				}
 			}
 		});

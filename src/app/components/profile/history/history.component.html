@@ -1,5 +1,8 @@
 <div id="main">
 	<div class="history">
+
+		<p class="empty-history" *ngIf="history"> Cronologia vuota! </p>
+
 		<div class="card row" *ngFor="let item of fiscalcodes">
 			<div class="person">
 				<h2> {{item.name}} {{item.surname}} </h2>

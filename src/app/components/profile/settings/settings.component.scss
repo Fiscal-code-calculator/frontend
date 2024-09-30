@@ -43,6 +43,32 @@
         button.save:hover{background: var(--messageGreen);}
     }
 
+    .delete-profile{
+        width: 90%;
+        margin-top: 25px;
+
+        button{
+            border-radius: 10px;
+            color: var(--textColor);
+            background: var(--backgroundAlt);
+            padding: 10px;
+            transition: .25s;
+
+            span{
+                width: 40px; height: 40px;
+                display: block;
+                background: url(../../../../assets/icons/delete-profile-white.svg);
+                margin: 5px;
+            }
+        }
+        button:hover{
+            background: var(--backgroundAlt2);
+            transition: .25s;
+            p{color: var(--primary);}
+            span{background: url(../../../../assets/icons/delete-profile.svg);}
+        }
+    }
+
 }
 
 

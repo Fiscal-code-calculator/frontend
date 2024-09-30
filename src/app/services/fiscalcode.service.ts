@@ -12,15 +12,14 @@ import { environment } from "../../environments/environment";
 export class FiscalCodeService{
 	private httprequest:HttpRequestService;
 
-  constructor(){
-		this.httprequest = inject(HttpRequestService);
+  constructor(){ this.httprequest = inject(HttpRequestService); }
+
+	public createFiscalCode(form:NewFiscalCodeData): Observable<BackendResponse> {
+		return this.httprequest.postRequest(environment.backendUrl + "/fiscalcodes", form);
 	}
 
-	public createFiscalCode(form:NewFiscalCodeData):Observable<BackendResponse>{
-		return this.httprequest.postRequest(environment.backendUrl + "/fiscalcodes",form);
-	}
-
-	public getAllFiscalCodes():Observable<BackendResponse>{
+	public getAllFiscalCodes(): Observable<BackendResponse> {
 		return this.httprequest.getRequest(environment.backendUrl + "/fiscalcodes");
 	}
+
 }
